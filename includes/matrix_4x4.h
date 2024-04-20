@@ -207,6 +207,41 @@ idlib_matrix_4x4_f32_multiply
 		idlib_matrix_4x4_f32 const* operand2
 	);
 
+/// @since 1.0
+/// @brief Assign this matrix the value a of a view matrix.
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
+/// @param source A pointer to the idlib_matrix_4x4_f32 object representing the point at which the viewer is positioned at
+/// @param target A pointer to the idlib_matrix_4x4_f32 object representing the point at which the viewer is looking at
+/// @param up A pointer to the idlib_matrix_4x4_f32 object representing the upward direction of the viewer.
+/// @remarks
+/// This function constructs a view matrix <code>V</code>given
+/// - the position the viewer is located at <code>source</code>,
+/// - the position the viewer is looking at <code>target</code>, and
+/// - the vector indicating the up direction of the viewer <code>up</code>.
+/// The view matrix <code>V</code> is constructed as follows
+/// Let
+/// @code
+/// forward := norm(target - source)
+/// right := forward x norm(up)
+/// up' := right x forward
+/// @endcode
+/// Then the view matrix <code>V</code> is given by
+/// @code
+/// V :=
+/// | right.x    | right.y    | right.z    | 0
+/// | up'.x      | up'.y      | u'.z       | 0
+/// | -forward.x | -forward.y | -forward.z | 0
+/// | 0          | 0          | 0          | 1
+/// @endcode
+static inline void
+idlib_matrix_4x4_f32_set_look_at
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_vector_3_f32 const* operand1,
+		idlib_vector_3_f32 const* operand2,
+		idlib_vector_3_f32 const* operand3
+	);
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
 	(
@@ -502,6 +537,56 @@ idlib_matrix_4x4_f32_multiply
 			}
 		}
 	}
+}
+
+static inline void
+idlib_matrix_4x4_f32_set_look_at
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_vector_3_f32 const* operand1,
+		idlib_vector_3_f32 const* operand2,
+		idlib_vector_3_f32 const* operand3
+	)
+{
+	idlib_vector_3_f32 forward, right, up1, up2;
+	idlib_matrix_4x4_f32 r, t;
+
+	// forward := norm(target - source)
+	idlib_vector_3_f32_subtract(&forward, operand2, operand1);
+	idlib_vector_3_f32_normalize(&forward, &forward);
+	// right := forward x norm(up)
+	idlib_vector_3_f32_normalize(&up1, operand3);
+	idlib_vector_3_f32_cross(&right, &forward, &up1);
+	// up' := right x forward
+	idlib_vector_3_f32_cross(& up2, & right, & forward);
+
+	// First column.
+	r.e[0][0] = right.e[0];
+	r.e[1][0] = up2.e[0];
+	r.e[2][0] = -forward.e[0];
+	r.e[3][0] = 0.f;
+	// Second column.
+	r.e[0][1] = right.e[1];
+	r.e[1][1] = up2.e[1];
+	r.e[2][1] = -forward.e[1];
+	r.e[3][1] = 0.f;
+	// Third column.
+	r.e[0][2] = right.e[2];
+	r.e[1][2] = up2.e[2];
+	r.e[2][2] = -forward.e[2];
+	r.e[3][2] = 0.f;
+	// Fourth column.
+	r.e[0][3] = 0.f;
+	r.e[1][3] = 0.f;
+	r.e[2][3] = 0.f;
+	r.e[3][3] = 1.f;
+
+	idlib_vector_3_f32 negae;
+	negae = *operand1;
+	idlib_vector_3_f32_negate(&negae, &negae);
+	idlib_matrix_4x4_f32_set_translation(&t, &negae);
+
+	idlib_matrix_4x4_f32_multiply(target, &r, &t);
 }
 
 #endif // IDLIB_MATRIX_4X4_H_INCLUDED
