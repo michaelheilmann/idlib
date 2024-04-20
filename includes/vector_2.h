@@ -22,6 +22,16 @@ idlib_vector_2_f32_get_squared_length
     idlib_vector_2_f32 const* operand
   );
 
+/// @since 1.0
+/// Get the length of a idlib_vector_2_f32 object.
+/// @param operand A pointer to the idlib_vector_2_f32 object.
+/// @return The length of the idlib_Vector_2_f32 object pointed to by @a operand.
+static inline idlib_f32
+idlib_vector_2_f32_get_length
+  (
+    idlib_vector_2_f32 const* operand
+  );
+
 /// @since 0.1
 /// Assign an idlib_vector_2_f32 object the specified scalar values.
 /// @param target A pointer to the idlib_vector_2_f32 object.
@@ -94,6 +104,13 @@ idlib_vector_2_f32_get_squared_length
                            + operand->e[1] * operand->e[1];
   return length_squared;
 }
+
+static inline idlib_f32
+idlib_vector_2_f32_get_length
+  (
+    idlib_vector_2_f32 const* operand
+  )
+{ return idlib_sqrt_f32(idlib_vector_2_f32_get_squared_length(operand)); }
 
 static inline void
 idlib_vector_2_f32_set
