@@ -1,7 +1,7 @@
 // Copyright (c) 2023-2024 Michael Heilmann.All rights reserved.
 #include "scalar.h"
 
-// tan(f)
+// sin(f), tan(f)
 #include <math.h>
 
 #if _DEBUG
@@ -29,6 +29,20 @@
   }
 
 #endif // _DEBUG
+
+idlib_f32
+idlib_sin_f32
+  (
+    idlib_f32 operand
+  )
+{ return sinf(operand); }
+
+idlib_f64
+idlib_sin_f64
+  (
+    idlib_f64 operand
+  )
+{ return sin(operand); }
 
 idlib_f32
 idlib_tan_f32
