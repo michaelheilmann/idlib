@@ -12,12 +12,12 @@
  * 0 denotes the minimum intensity and 255 denotes the maximum intensity.
  */
 typedef struct idlib_color_3_u8 {
-	union {
-		struct {
-			idlib_u8 r, g, b;
-		};
-		idlib_u8 components[3];
-	};
+  union {
+    struct {
+      idlib_u8 r, g, b;
+    };
+    idlib_u8 components[3];
+  };
 } idlib_color_3_u8;
 
 /** 
@@ -30,26 +30,26 @@ typedef struct idlib_color_3_u8 {
  */
 static inline void
 idlib_color_3_u8_set
-	(
-		idlib_color_3_u8 *target,
-		idlib_u8 operand1,
-		idlib_u8 operand2,
-		idlib_u8 operand3
-	);
+  (
+    idlib_color_3_u8 *target,
+    idlib_u8 operand1,
+    idlib_u8 operand2,
+    idlib_u8 operand3
+  );
 
 static inline void
 idlib_color_3_u8_set
-	(
-		idlib_color_3_u8 *target,
-		idlib_u8 operand1,
-		idlib_u8 operand2,
-		idlib_u8 operand3
-	)
+  (
+    idlib_color_3_u8 *target,
+    idlib_u8 operand1,
+    idlib_u8 operand2,
+    idlib_u8 operand3
+  )
 {
-	IDLIB_DEBUG_ASSERT(NULL != target);
-	target->r = operand1;
-	target->g = operand2;
-	target->b = operand3;
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  target->r = operand1;
+  target->g = operand2;
+  target->b = operand3;
 }
 
 /**
@@ -60,12 +60,12 @@ idlib_color_3_u8_set
  * 0 denotes the minimum intensity and 1 denotes the maximum intensity.
  */
 typedef struct idlib_color_3_f32 {
-	union {
-		struct {
-			idlib_f32 r, g, b;
-		};
-		idlib_f32 components[3];
-	};
+  union {
+    struct {
+      idlib_f32 r, g, b;
+    };
+    idlib_f32 components[3];
+  };
 } idlib_color_3_f32;
 
 /**
@@ -78,26 +78,26 @@ typedef struct idlib_color_3_f32 {
  */
 static inline void
 idlib_color_3_f32_set
-	(
-		idlib_color_3_f32* target,
-		idlib_f32 operand1,
-		idlib_f32 operand2,
-		idlib_f32 operand3
-	);
+  (
+    idlib_color_3_f32* target,
+    idlib_f32 operand1,
+    idlib_f32 operand2,
+    idlib_f32 operand3
+  );
 
 static inline void
 idlib_color_3_f32_set
-	(
-		idlib_color_3_f32* target,
-		idlib_f32 operand1,
-		idlib_f32 operand2,
-		idlib_f32 operand3
-	)
+  (
+    idlib_color_3_f32* target,
+    idlib_f32 operand1,
+    idlib_f32 operand2,
+    idlib_f32 operand3
+  )
 {
-	IDLIB_DEBUG_ASSERT(NULL != target);
-	target->r = operand1;
-	target->g = operand2;
-	target->b = operand3;
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  target->r = operand1;
+  target->g = operand2;
+  target->b = operand3;
 }
 
 /**
@@ -108,12 +108,12 @@ idlib_color_3_f32_set
  * 0 denotes the minimum intensity and 1 denotes the maximum intensity.
  */
 typedef struct idlib_color_4_f32 {
-	union {
-		struct {
-			idlib_f32 r, g, b, a;
-		};
-		idlib_f32 components[4];
-	};
+  union {
+    struct {
+      idlib_f32 r, g, b, a;
+    };
+    idlib_f32 components[4];
+  };
 } idlib_color_4_f32;
 
 /**
@@ -127,29 +127,29 @@ typedef struct idlib_color_4_f32 {
  */
 static inline void
 idlib_color_4_f32_set
-	(
-		idlib_color_4_f32* target,
-		idlib_f32 operand1,
-		idlib_f32 operand2,
-		idlib_f32 operand3,
-		idlib_f32 operand4
-	);
+  (
+    idlib_color_4_f32* target,
+    idlib_f32 operand1,
+    idlib_f32 operand2,
+    idlib_f32 operand3,
+    idlib_f32 operand4
+  );
 
 static inline void
 idlib_color_4_f32_set
-	(
-		idlib_color_4_f32* target,
-		idlib_f32 operand1,
-		idlib_f32 operand2,
-		idlib_f32 operand3,
-		idlib_f32 operand4
-	)
+  (
+    idlib_color_4_f32* target,
+    idlib_f32 operand1,
+    idlib_f32 operand2,
+    idlib_f32 operand3,
+    idlib_f32 operand4
+  )
 {
-	IDLIB_DEBUG_ASSERT(NULL != target);
-	target->r = operand1;
-	target->g = operand2;
-	target->b = operand3;
-	target->a = operand4;
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  target->r = operand1;
+  target->g = operand2;
+  target->b = operand3;
+  target->a = operand4;
 }
 
 /**
@@ -161,24 +161,24 @@ idlib_color_4_f32_set
  */
 static inline void
 idlib_color_convert_3_u8_to_4_f32
-	(
-		idlib_color_4_f32* target,
-		idlib_color_3_u8* operand1,
-		idlib_f32 operand2
-	);
+  (
+    idlib_color_4_f32* target,
+    idlib_color_3_u8* operand1,
+    idlib_f32 operand2
+  );
 
 static inline void
 idlib_color_convert_3_u8_to_4_f32
-	(
-		idlib_color_4_f32* target,
-		idlib_color_3_u8* operand1,
-		idlib_f32 operand2
-	)
+  (
+    idlib_color_4_f32* target,
+    idlib_color_3_u8* operand1,
+    idlib_f32 operand2
+  )
 {
-	for (size_t i = 0; i < 3; ++i) {
-		target->components[i] = ((idlib_f32)operand1->components[i]) / 255.f;
-	}
-	target->components[3] = operand2;
+  for (size_t i = 0; i < 3; ++i) {
+    target->components[i] = ((idlib_f32)operand1->components[i]) / 255.f;
+  }
+  target->components[3] = operand2;
 }
 
 #endif // IDLIB_COLOR_H_INCLUDED
