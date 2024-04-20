@@ -72,6 +72,30 @@ idlib_deg_to_rad_f64
 
 /**
  * @since 1.0
+ * Compute the cosine.
+ * @param operand An angle in radians.
+ * @return The cosine of the angle.
+ */
+idlib_f32
+idlib_cos_f32
+  (
+    idlib_f32 operand
+  );
+
+/**
+ * @since 1.0
+ * Compute the cosine.
+ * @param operand An angle in radians.
+ * @return The cosine of the angle.
+ */
+idlib_f64
+idlib_cos_f64
+  (
+    idlib_f64 operand
+  );
+
+/**
+ * @since 1.0
  * Compute the sine.
  * @param operand An angle in radians.
  * @return The sine of the angle.
