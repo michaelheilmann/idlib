@@ -20,6 +20,12 @@ static inline void
 idlib_matrix_4x4_f32_set_identity
 	(
 		idlib_matrix_4x4_f32* target
+	);
+
+static inline void
+idlib_matrix_4x4_f32_set_identity
+	(
+		idlib_matrix_4x4_f32* target
 	)
 {
 	IDLIB_DEBUG_ASSERT(NULL != target);
