@@ -54,7 +54,7 @@ static inline void
 idlib_matrix_4x4_f32_set_translation
   (
     idlib_matrix_4x4_f32* target,
-    idlib_vector_3_f32* operand
+    idlib_vector_3_f32 const* operand
   );
 
 /// @since 1.0
@@ -383,7 +383,7 @@ static inline void
 idlib_matrix_4x4_f32_set_translation
   (
     idlib_matrix_4x4_f32* target,
-    idlib_vector_3_f32* operand
+    idlib_vector_3_f32 const* operand
   )
 {
   // first column
