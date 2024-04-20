@@ -64,8 +64,8 @@ static inline void
 idlib_vector_3_f32_add
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand1,
-    idlib_vector_3_f32* operand2
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
   );
 
 /// @since 1.0
@@ -78,8 +78,8 @@ static inline void
 idlib_vector_3_f32_subtract
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand1,
-    idlib_vector_3_f32* operand2
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
   );
 
 /// @since 1.0
@@ -141,8 +141,8 @@ static inline void
 idlib_vector_3_f32_add
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand1,
-    idlib_vector_3_f32* operand2
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
   )
 {
   IDLIB_DEBUG_ASSERT(NULL != target);
@@ -157,8 +157,8 @@ static inline void
 idlib_vector_3_f32_subtract
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand1,
-    idlib_vector_3_f32* operand2
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
   )
 {
   IDLIB_DEBUG_ASSERT(NULL != target);
