@@ -24,8 +24,8 @@ typedef struct idlib_matrix_4x4_f32 {
 } idlib_matrix_4x4_f32;
 
 /// @since 1.0
-/// @brief Assign an idlib_matrix_4x4_f32 object the values of an identity matrix.
-/// @param target Pointer to the idlib_matrix_4x4_f32 object.
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of the identity matrix.
+/// @param target Pointer to the idlib_matrix_4x4_f32 object to which the result is assigned.
 static inline void
 idlib_matrix_4x4_f32_set_identity
   (
@@ -35,13 +35,20 @@ idlib_matrix_4x4_f32_set_identity
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of a translation matrix.
 /// @param target Pointer to the idlib_matrix_4x4_f32 object to assign the result to.
-/// @param operand Pointer to the idlib_vector_3_f32 object representing the translation vector.
+/// @param operand Pointer to an idlib_vector_3_f32 object.
+/// Its x, y, and z component values denote the translations along the x-, y-, and z-axis, respectively.
 /// @remarks
 /// @code
 /// | 1 | 0 | 0 | x |
 /// | 0 | 1 | 0 | y |
 /// | 0 | 0 | 1 | z |
 /// | 0 | 0 | 0 | 1 |
+/// @endcode
+/// with
+/// @code
+/// x = idlib_vector_3_f32_get_x(operand)
+/// y = idlib_vector_3_f32_get_y(operand)
+/// z = idlib_vector_3_f32_get_z(operand)
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_translation
@@ -62,6 +69,11 @@ idlib_matrix_4x4_f32_set_translation
 /// | 0 | s |  c | 0 |
 /// | 0 | 0 |  0 | 1 |
 /// @endcode
+/// with
+/// @code
+/// c = cos(2 * pi * operand1 / 360)
+/// s = sin(2 * pi * operand1 / 360)
+/// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_x
   (
@@ -81,6 +93,11 @@ idlib_matrix_4x4_f32_set_rotation_x
 /// | -s | 0 | c | 0 |
 /// |  0 | 0 | 0 | 1 |
 /// @endcode
+/// with
+/// @code
+/// c = cos(2 * pi * operand1 / 360)
+/// s = sin(2 * pi * operand1 / 360)
+/// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_y
   (
@@ -99,6 +116,11 @@ idlib_matrix_4x4_f32_set_rotation_y
 /// | s |  c | 0 | 0 |
 /// | 0 |  0 | 1 | 0 |
 /// | 0 |  0 | 0 | 1 |
+/// @endcode
+/// with
+/// @code
+/// c = cos(2 * pi * operand1 / 360)
+/// s = sin(2 * pi * operand1 / 360)
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_z
@@ -242,13 +264,20 @@ idlib_matrix_4x4_f32_set_look_at
 /// @since 1.1
 /// @brief Assign this matrix the values of scaling matrix representing.
 /// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
-/// @param operand The angle of rotation, 
+/// @param operand A pointer to the idlib_vector_3_f32 object.
+/// Its x, y, and z component values denote the scalings along the x-, y-, and z-axis, respectively.
 /// @remarks
 /// @code
-/// | c | -s | 0 | 0 |
-/// | s |  c | 0 | 0 |
-/// | 0 |  0 | 1 | 0 |
-/// | 0 |  0 | 0 | 1 |
+/// | x | 0 | 0 | 0 |
+/// | 0 | y | 0 | 0 |
+/// | 0 | 0 | z | 0 |
+/// | 0 | 0 | 0 | 1 |
+/// @endcode
+/// where
+/// @code
+/// x = idlib_vector_3_f32_get_x(operand)
+/// y = idlib_vector_3_f32_get_y(operand)
+/// z = idlib_vector_3_f32_get_z(operand)
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_scale
