@@ -260,6 +260,16 @@ idlib_matrix_4x4_f32_set_scale
 		idlib_vector_3_f32* operand
 	);
 
+/// @since 1.1
+/// @brief Get a pointer to the data of a idlib_matrix_4x4_f32 object.
+/// @param operand A pointer to the idlib_matrix_4x4_f32 object.
+/// @return A pointer to the data. The pointer remains valid as long as the object remains valid and is not modified.
+static inline void*
+idlib_matrix_4x4_f32_get_data
+	(
+		idlib_matrix_4x4_f32* operand
+	);
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
 	(
@@ -635,5 +645,12 @@ idlib_matrix_4x4_f32_set_scale
 	target->e[2][3] = 0.f;
 	target->e[3][3] = 1.f;
 }
+
+static inline void*
+idlib_matrix_4x4_f32_get_data
+	(
+		idlib_matrix_4x4_f32* operand
+	)
+{ return &(operand->e[0][0]); }
 
 #endif // IDLIB_MATRIX_4X4_H_INCLUDED
