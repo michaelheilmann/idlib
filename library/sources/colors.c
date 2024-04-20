@@ -21,10 +21,12 @@
 
 #include "colors.h"
 
-#if IDLIB_C_COMPILER == IDLIB_C_COMPILER_MSVC
+#if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
   #define STATIC_ASSERT(CONDITION, MESSAGE) static_assert(CONDITION, MESSAGE)
-#else
+#elif IDLIB_COMPILER_C == IDLIB_COMPILER_C_GCC
   #define STATIC_ASSERT(CONDITION, MESSAGE) _Static_assert(CONDITION, MESSAGE)
+#else
+  #error("compiler not (yet) supported")
 #endif
 
 #define DEFINE(NAME, R, G, B) \
