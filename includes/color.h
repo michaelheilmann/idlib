@@ -181,4 +181,29 @@ idlib_color_convert_3_u8_to_4_f32
   target->components[3] = operand2;
 }
 
+/**
+ * @since 1.3
+ * @brief Convert an RGB U8 to a RGB F32 color.
+ * @param target A pointer to the idlib_color_3_f32 receiving the result.
+ * @param operand A pointer to the idlib_color_3_u8 color.
+ */
+static inline void
+idlib_color_convert_3_u8_to_3_f32
+  (
+    idlib_color_3_f32* target,
+    idlib_color_3_u8 const* operand
+  );
+
+static inline void
+idlib_color_convert_3_u8_to_3_f32
+  (
+    idlib_color_3_f32* target,
+    idlib_color_3_u8 const* operand
+  )
+{
+  for (size_t i = 0; i < 3; ++i) {
+    target->components[i] = ((idlib_f32)operand->components[i]) / 255.f;
+  }
+}
+
 #endif // IDLIB_COLOR_H_INCLUDED
