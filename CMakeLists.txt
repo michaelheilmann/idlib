@@ -49,7 +49,5 @@ if(MSVC)
 
 endif()
 
-add_library(idlib STATIC)
-target_sources(idlib PUBLIC ${idlib-headers})
-target_sources(idlib PRIVATE ${idlib-sources})
-target_include_directories(idlib PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/includes")
+add_library(idlib STATIC ${idlib-headers} ${idlib-sources})
+target_include_directories(idlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/includes")
