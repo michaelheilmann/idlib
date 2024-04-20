@@ -156,10 +156,12 @@ idlib_vector_2_f32_normalize
   if (sql == 0.f) {
     target->e[0] = 0.f;
     target->e[1] = 0.f;
+    return false;
   } else {
     idlib_f32 l = idlib_sqrt_f32(sql);
     target->e[0] = operand->e[0] / l;
     target->e[1] = operand->e[1] / l;
+    return true;
   }
 }
 
