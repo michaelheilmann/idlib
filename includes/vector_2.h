@@ -47,6 +47,18 @@ idlib_vector_2_f32_normalize
     idlib_vector_2_f32 const* operand
   );
 
+/// @since 1.0
+/// @brief Negate a vector.
+/// @param target Pointer to the idlib_vector_2_f32 object to assign the result to.
+/// @param operand Pointer to the idlib_vector_2_f32 object to negate.
+/// @remarks @a target and @a operand all may refer to the same idlib_vector_2_f32 object.
+static inline void
+idlib_vector_2_f32_negate
+  (
+    idlib_vector_2_f32* target,
+    idlib_vector_2_f32 const* operand
+  );
+
 /// @since 0.1
 /// Assign an idlib_vector_2_f32 object the specified scalar values.
 /// @param target A pointer to the idlib_vector_2_f32 object to assign the vector <code>(x,y)</code> to.
@@ -163,6 +175,16 @@ idlib_vector_2_f32_normalize
     target->e[1] = operand->e[1] / l;
     return true;
   }
+}
+
+static inline void
+idlib_vector_2_f32_negate
+  (
+    idlib_vector_2_f32* target,
+    idlib_vector_2_f32 const* operand
+  )
+{
+  idlib_vector_2_f32_set(target, -operand->e[0], -operand->e[1]);
 }
 
 static inline void
