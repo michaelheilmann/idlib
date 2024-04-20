@@ -72,6 +72,30 @@ idlib_deg_to_rad_f64
 
 /**
  * @since 1.0
+ * Compute the square root.
+ * @param operand The operand value.
+ * @return The square root of the operand value.
+ */
+idlib_f32
+idlib_sqrt_f32
+  (
+    idlib_f32 operand
+  );
+
+/**
+ * @since 1.0
+ * Compute the square root.
+ * @param operand The value.
+ * @return The square root of the value.
+ */
+idlib_f64
+idlib_sqrt_f64
+  (
+    idlib_f64 operand
+  );
+
+/**
+ * @since 1.0
  * Compute the cosine.
  * @param operand An angle in radians.
  * @return The cosine of the angle.
