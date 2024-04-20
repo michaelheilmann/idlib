@@ -7,13 +7,13 @@
 #include <stddef.h>
 
 /// @since 1.0
-/// A two component vector with elements of type idlib_f32.
+/// @brief A two component vector with elements of type idlib_f32.
 typedef struct idlib_vector_2_f23 {
   idlib_f32 e[2];
 } idlib_vector_2_f32;
 
 /// @since 1.0
-/// Get the squared length of a idlib_vector_2_f32 object.
+/// @brief Get the squared length of a idlib_vector_2_f32 object.
 /// @param operand A pointer to the idlib_vector_2_f32 object.
 /// @return The squared length of the idlib_Vector_2_f32 object pointed to by @a operand.
 static inline idlib_f32
@@ -23,8 +23,8 @@ idlib_vector_2_f32_get_squared_length
   );
 
 /// @since 1.0
-/// Get the length of a idlib_vector_2_f32 object.
-/// @param operand A pointer to the idlib_vector_2_f32 object.
+/// @brief Get the length of a idlib_vector_2_f32 object.
+/// @param operand Pointer to the idlib_vector_2_f32 object.
 /// @return The length of the idlib_Vector_2_f32 object pointed to by @a operand.
 static inline idlib_f32
 idlib_vector_2_f32_get_length
@@ -55,7 +55,7 @@ idlib_vector_2_f32_set_zero
 
 /// @since 1.0
 /// Compute the sum of two idlib_vector_2_f32 objects and assign the result to a idlib_vector_2_f32 object.
-/// @param target The idlib_vector_2_f32 object to assign the result to.
+/// @param target Pointer to the idlib_vector_2_f32 object to assign the result to.
 /// @param operand1 The idlib_vector_2_f32 object that is the augend (aka first term).
 /// @param operand2 The idlib_vector_2_f32 object that is the addend (aka second term).
 /// @remarks @a target, @a operand1, and @a operand2 all may refer to the same idlib_vector_2_f32 object.
@@ -69,7 +69,7 @@ idlib_vector_2_f32_add
 
 /// @since 1.0
 /// Compute the difference of two idlib_vector_2_f32 objects and assign the result to a idlib_vector_2_f32 object.
-/// @param target The idlib_vector_2_f32 object to assign the result to.
+/// @param target Pointer to the idlib_vector_2_f32 object to assign the result to.
 /// @param operand1 The idlib_vector_2_f32 object that is the minuend (aka first term).
 /// @param operand2 The idlib_vector_2_f32 object that is the subtrahend (aka second term).
 /// @remarks @a target, @a operand1, and @a operand2 all may refer to the same idlib_vector_2_f32 object.
@@ -95,7 +95,7 @@ idlib_vector_2_f32_are_equal
 
 /// @since 1.0
 /// Linear interpolation between two vectors.
-/// @param target The idlib_vector_2_f32 object to assign the result to.
+/// @param target Pointer to the idlib_vector_2_f32 object to assign the result to.
 /// @param operand1 Pointer to an idlib_vector_2_f32 object, the first operand.
 /// @param operand2 Pointer to an idlib_vector_2_f32 object, the second operand.
 /// @param operand3 idlib_f32 value, the interpolation factor.

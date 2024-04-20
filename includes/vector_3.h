@@ -7,13 +7,13 @@
 #include <stddef.h>
 
 /// @since 0.1
-/// A three component vector with elements of type idlib_f32.
+/// @brief A three component vector with elements of type idlib_f32.
 typedef struct idlib_vector_3_f32 {
   idlib_f32 e[3];
 } idlib_vector_3_f32;
 
 /// @since 1.0
-/// Get the squared length of a idlib_vector_3_f32 object.
+/// @brief Get the squared length of a idlib_vector_3_f32 object.
 /// @param operand A pointer to the idlib_vector_3_f32 object.
 /// @return The squared length of the idlib_Vector_3_f32 object pointed to by @a operand.
 static inline idlib_f32
@@ -23,7 +23,7 @@ idlib_vector_3_f32_get_squared_length
   );
 
 /// @since 1.0
-/// Get the length of a idlib_vector_3_f32 object.
+/// @brief Get the length of a idlib_vector_3_f32 object.
 /// @param operand A pointer to the idlib_vector_3_f32 object.
 /// @return The length of the idlib_Vector_3_f32 object pointed to by @a operand.
 static inline idlib_f32
@@ -33,8 +33,8 @@ idlib_vector_3_f32_get_length
   );
 
 /// @since 0.1
-/// Assign an idlib_vector_3_f32 object the specified scalar values.
-/// @param target A pointer to the idlib_vector_3_f32 object.
+/// @brief Assign an idlib_vector_3_f32 object the specified scalar values.
+/// @param target Pointer to the idlib_vector_3_f32 object.
 /// @param x, y, z The scalar values.
 static inline void
 idlib_vector_3_f32_set
@@ -46,8 +46,8 @@ idlib_vector_3_f32_set
   );
 
 /// @since 0.1
-/// Assign an idlib_vector_3_f32 object the values of an zero vector.
-/// @param target A pointer to the idlib_vector_3_f32 object.
+/// @brief Assign an idlib_vector_3_f32 object the values of an zero vector.
+/// @param target Pointer to the idlib_vector_3_f32 object.
 static inline void
 idlib_vector_3_f32_set_zero
   (
@@ -55,8 +55,8 @@ idlib_vector_3_f32_set_zero
   );
 
 /// @since 1.0
-/// Compute the sum of two idlib_vector_3_f32 objects and assign the result to a idlib_vector_3_f32 object.
-/// @param target The idlib_vector_3_f32 object to assign the result to.
+/// @brief Compute the sum of two idlib_vector_3_f32 objects and assign the result to a idlib_vector_3_f32 object.
+/// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
 /// @param operand1 The idlib_vector_3_f32 object that is the augend (aka first term).
 /// @param operand2 The idlib_vector_3_f32 object that is the addend (aka second term).
 /// @remarks @a target, @a operand1, and @a operand2 all may refer to the same idlib_vector_3_f32 object.
@@ -70,7 +70,7 @@ idlib_vector_3_f32_add
 
 /// @since 1.0
 /// Compute the difference of two idlib_vector_3_f32 objects and assign the result to a idlib_vector_3_f32 object.
-/// @param target The idlib_vector_3_f32 object to assign the result to.
+/// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
 /// @param operand1 The idlib_vector_3_f32 object that is the minuend (aka first term).
 /// @param operand2 The idlib_vector_3_f32 object that is the subtrahend (aka second term).
 /// @remarks @a target, @a operand1, and @a operand2 all may refer to the same idlib_vector_3_f32 object.
@@ -96,7 +96,7 @@ idlib_vector_3_f32_are_equal
 
 /// @since 1.0
 /// Linear interpolation between two vectors.
-/// @param target The idlib_vector_3_f32 object to assign the result to.
+/// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
 /// @param operand1 Pointer to an idlib_vector_3_f32 object, the first operand.
 /// @param operand2 Pointer to an idlib_vector_3_f32 object, the second operand.
 /// @param operand3 idlib_f32 value, the interpolation factor.
