@@ -2,10 +2,22 @@
 #if !defined(IDLIB_MATRIX_4X4_H_INCLUDED)
 #define IDLIB_MATRIX_4X4_H_INCLUDED
 
+#include "configure.h"
 #include "scalar.h"
 // NULL
 #include <stddef.h>
 #include "vector_3.h"
+
+// 'Windows.h', which is frequently included in Windows
+// programs, defines the macros 'near' and 'far' causing
+// an unintended substitution of names of parameters in
+// 'matrix_4x4.h'.This prevents this substitution.
+#if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
+	#pragma push_macro("near")
+	#undef near
+	#pragma push_macro("far")
+	#undef far
+#endif
 
 /// @since 1.0
 /// @brief A row-major matrix with elements of type idlib_f32.
@@ -270,5 +282,10 @@ idlib_matrix_4x4_f32_set_rotation_z
 	target->e[2][3] = 0.f;
 	target->e[3][3] = 1.f;
 }
+
+#if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
+	#pragma pop_macro("near")
+	#pragma pop_macro("far")
+#endif
 
 #endif // IDLIB_MATRIX_4X4_H_INCLUDED
