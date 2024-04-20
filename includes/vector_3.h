@@ -32,6 +32,21 @@ idlib_vector_3_f32_get_length
     idlib_vector_3_f32 const* operand
   );
 
+/// @since 1.0
+/// @brief Get the normalized vector for a vector.
+/// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
+/// @param operand Pointer to the idlib_vector_3_f32 object of which the normalized vector is computed.
+/// @return @a false if the vector represented by @a operand, @a true otherwise.
+/// If @a false is returned, then *target was assigned a copy of @a operand.
+/// @remarks
+/// "represented by @a operand" actually means "represented by the object pointed to by @a operand".
+static inline bool
+idlib_vector_3_f32_normalize
+  (
+    idlib_vector_3_f32* target,
+    idlib_vector_3_f32* operand
+  );
+
 /// @since 0.1
 /// @brief Assign an idlib_vector_3_f32 object the specified scalar values.
 /// @param target Pointer to the idlib_vector_3_f32 object.
@@ -145,6 +160,26 @@ idlib_vector_3_f32_get_length
     idlib_vector_3_f32 const* operand
   )
 { return idlib_sqrt_f32(idlib_vector_3_f32_get_squared_length(operand)); }
+
+static inline bool
+idlib_vector_3_f32_normalize
+  (
+    idlib_vector_3_f32* target,
+    idlib_vector_3_f32* operand
+  )
+{
+  idlib_f32 sql = idlib_vector_3_f32_get_squared_length(operand);
+  if (sql == 0.f) {
+    target->e[0] = 0.f;
+    target->e[1] = 0.f;
+    target->e[2] = 0.f;
+  } else {
+    idlib_f32 l = idlib_sqrt_f32(sql);
+    target->e[0] = operand->e[0] / l;
+    target->e[1] = operand->e[1] / l;
+    target->e[2] = operand->e[2] / l;
+  }
+}
 
 static inline void
 idlib_vector_3_f32_set
