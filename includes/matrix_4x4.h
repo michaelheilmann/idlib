@@ -7,14 +7,14 @@
 #include <stddef.h>
 
 /// @since 1.0
-/// A row-major matrix with elements of type idlib_f32.
+/// @brief A row-major matrix with elements of type idlib_f32.
 /// Row major means: The first index denotes the row, the second index denotes the column.
 typedef struct idlib_matrix_4x4_f32 {
 	idlib_f32 e[4][4];
 } idlib_matrix_4x4_f32;
 
 /// @since 0.1
-/// Assign an idlib_matrix_4x4_f32 object the values of an identity matrix.
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of an identity matrix.
 /// @param target Pointer to the idlib_matrix_4x4_f32 object.
 static inline void
 idlib_matrix_4x4_f32_set_identity
