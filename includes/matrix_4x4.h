@@ -271,8 +271,8 @@ idlib_matrix_4x4_f32_set_identity
 	// fourth column
 	target->e[0][3] = 0.f;
 	target->e[1][3] = 0.f;
-	target->e[2][3] = 1.0f;
-	target->e[2][3] = 0.f;
+	target->e[2][3] = 0.0f;
+	target->e[3][3] = 1.f;
 }
 
 static inline void
