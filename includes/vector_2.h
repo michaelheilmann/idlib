@@ -87,7 +87,7 @@ idlib_vector_2_f32_subtract
 /// @param operand2 The second operand.
 /// @return @a true if the idlib_f32 objects are equal. @a false otherwise.
 static inline bool
-idlib_vector_2_are_equal
+idlib_vector_2_f32_are_equal
   (
     idlib_vector_2_f32 const* operand1,
     idlib_vector_2_f32 const* operand2
@@ -164,7 +164,7 @@ idlib_vector_2_f32_subtract
 }
 
 static inline bool
-idlib_vector_2_are_equal
+idlib_vector_2_f32_are_equal
   (
     idlib_vector_2_f32 const* operand1,
     idlib_vector_2_f32 const* operand2
