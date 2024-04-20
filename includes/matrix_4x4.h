@@ -279,6 +279,18 @@ idlib_matrix_4x4_f32_negate
     idlib_matrix_4x4_f32 const* operand
   );
 
+/// @since 1.3
+/// @brief Transpose a matrix.
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
+/// @param operand Pointer to the idlib_matrix_4x4_f32 object to transpose.
+/// @remarks @a target and @a operand all may refer to the same idlib_matrix_4x4_f32 object.
+static inline void
+idlib_matrix_4x4_f32_transpose
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand
+  );
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
   (
@@ -673,6 +685,87 @@ idlib_matrix_4x4_f32_negate
     for (size_t j = 0; j < 4; ++j) {
       target->e[i][j] = -operand->e[i][j];
     }
+  }
+}
+
+static inline void
+idlib_matrix_4x4_f32_transpose
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand
+  )
+{
+  /*
+    * Given a matrix
+    * (0,0)(0,1)(0,2)(0,3)
+    * (1,0)(1,1)(1,2)(1,3)
+    * (2,0)(2,1)(2,2)(2,3)
+    * (3,0)(3,1)(3,2)(3,3)
+    * the algorith below is correct as
+    * i = 0, i < 4 continue
+    * j = 0, 0 < 0 = false => abort
+    * i = 1, i < 4 = true => swap continue
+    * j = 0, 0 < 1 = true => swap(1,0)
+    * j = 1, 1 < 1 = false => abort
+    * i = 2, i < 4 = true => continue
+    * j = 0, 0 < 2 = true => swap(2,0)
+    * j = 1, 1 < 2 = true => swap(2,1)
+    * j = 2, 2 < 2 = false => abort
+    * i = 3, i < 4 = true => continue
+    * j = 0, 0 < 3 = true => swap(3,0)
+    * j = 1, 1 < 3 = true => swap(3,1)
+    * j = 2, 2 < 3 = true => swap(3,2)
+    * j = 3, 3 < 3 = false => abort,
+    * i = 4, i < 4 = false => abort
+    */
+  if (target == operand) {
+    // in place transpose
+
+    #if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
+    #pragma push_macro("SWAP")
+    #undef SWAP
+    #endif
+
+    #define SWAP(x, y) \
+    { \
+      idlib_f32 t = operand->e[x][y]; \
+      target->e[x][y] = operand->e[y][x]; \
+      target->e[y][x] = t; \
+    }
+    // rows from top to bottom
+    for (size_t i = 0; i < 4; ++i) {
+      for (size_t j = 1; j < i; ++j) {
+        SWAP(i, j);
+      }
+    }
+
+    #if defined(_MSVC_VER)
+    #pragma pop_macro("SWAP")
+    #endif
+
+  } else {
+    // out of place transpose
+
+    #if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
+    #pragma push_macro("SWAP")
+    #undef SWAP
+    #endif
+
+    #define SWAP(x, y) \
+      { \
+        target->e[y][x] = operand->e[y][x]; \
+      }
+
+    // rows from top to bottom
+    for (size_t i = 0; i < 4; ++i) {
+      for (size_t j = i; j < i; ++j) {
+        SWAP(i, j);
+      }
+    }
+
+    #if defined(_MSVC_VER)
+    #pragma pop_macro("SWAP")
+    #endif
   }
 }
 
