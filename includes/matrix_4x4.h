@@ -142,7 +142,7 @@ idlib_matrix_4x4_f32_set_rotation_z
 /// - the positive x-axis points to the right
 /// - the positive y-axis points to the top
 static inline void
-idlib_matrix_4x4_f32_set_ortho
+idlib_matrix_4x4_f32_set_orthographic
 	(
 		idlib_matrix_4x4_f32* target,
 		idlib_f32 left,
@@ -416,7 +416,7 @@ idlib_matrix_4x4_f32_set_rotation_z
 }
 
 inline void
-idlib_matrix_4x4_f32_set_ortho
+idlib_matrix_4x4_f32_set_orthographic
 	(
 		idlib_matrix_4x4_f32* target,
 		idlib_f32 left,
