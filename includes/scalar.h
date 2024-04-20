@@ -70,4 +70,28 @@ idlib_deg_to_rad_f64
   )
 { return (operand / 180.) * IDLIB_PI_F64; }
 
+/**
+ * @since 1.0
+ * Compute the tangens.
+ * @param operand An angle in radians.
+ * @return The tangens of the angle.
+ */
+idlib_f32
+idlib_tan_f32
+  (
+    idlib_f32 operand
+  );
+
+/**
+ * @since 1.0
+ * Compute the tangens.
+ * @param operand An angle in radians.
+ * @return The tangens of the angle.
+ */
+idlib_f64
+idlib_tan_f64
+  (
+    idlib_f64 operand
+  );
+
 #endif // IDLIB_SCALAR_H_INCLUDED

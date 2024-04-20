@@ -1,6 +1,9 @@
 // Copyright (c) 2023-2024 Michael Heilmann.All rights reserved.
 #include "scalar.h"
 
+// tan(f)
+#include <math.h>
+
 #if _DEBUG
 
   // fprintf, stderr
@@ -26,3 +29,17 @@
   }
 
 #endif // _DEBUG
+
+idlib_f32
+idlib_tan_f32
+  (
+    idlib_f32 operand
+  )
+{ return tanf(operand); }
+
+idlib_f64
+idlib_tan_f64
+  (
+    idlib_f64 operand
+  )
+{ return tan(operand); }
