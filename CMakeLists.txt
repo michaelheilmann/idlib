@@ -11,6 +11,9 @@ set(idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib.c")
 list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/scalar.h")
 list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/scalar.c")
 
+list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/matrix_4x4.h")
+list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/matrix_4x4.c")
+
 list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/vector_2.h")
 list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/vector_2.c")
 
