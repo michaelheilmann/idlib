@@ -3,10 +3,65 @@
 
 cmake_minimum_required(VERSION 3.20)
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/language.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/detect_instruction_set_architecture.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/detect_operating_system.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/detect_void_pointer_size.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/detect_compiler.cmake)
+
 project(idlib LANGUAGES C)
 
-set(idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib.h")
-set(idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib.c")
+add_library(idlib STATIC)
+set(idlib-headers "")
+set(idlib-sources "")
+
+idlib_detect_compiler(idlib IDLIB_LANGUAGE_ID_C)
+
+idlib_detect_instruction_set_architecture(idlib)
+
+idlib_detect_operating_system(idlib)
+
+###############################################################################################################################################################
+
+if (${idlib.COMPILER_C_ID} EQUAL ${IDLIB_COMPILER_C_ID_MSVC})
+  set("IDLIB_COMPILER_C" "IDLIB_COMPILER_C_MSVC")
+elseif (${idlib.COMPILER_C_ID} EQUAL ${IDLIB_COMPILER_C_ID_GCC})
+  set("IDLIB_COMPILER_C" "IDLIB_COMPILER_C_GCC")
+elseif (${idlib.COMPILER_C_ID} EQUAL ${IDLIB_COMPILER_C_ID_UNKNOWN})
+  set("IDLIB_COMPILER_C" "IDLIB_COMPILER_C_UNKNOWN")
+else()
+  message(FATAL_ERROR "C compiler detection not executed")
+endif()
+
+if (${idlib.INSTRUCTION_SET_ARCHITECTURE_ID} EQUAL ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_X64})
+  set("IDLIB_INSTRUCTION_SET_ARCHITECTURE" "IDLIB_INSTRUCTION_SET_ARCHITECTURE_X64")
+elseif (${idlib.INSTRUCTION_SET_ARCHITECTURE_ID} EQUAL ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_X86})
+  set("IDLIB_INSTRUCTION_SET_ARCHITECTURE" "IDLIB_INSTRUCTION_SET_ARCHITECTURE_X86")
+elseif (${idlib.INSTRUCTION_SET_ARCHITECTURE_ID} EQUAL ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_UNKNOWN})
+  set("IDLIB_INSTRUCTION_SET_ARCHITECTURE" "IDLIB_INSTRUCTION_SET_ARCHITECTURE_UNKNOWN")
+else()
+  message(FATAL_ERROR "instruction set architecture not executed")
+endif()
+
+if (${idlib.OPERATING_SYSTEM_ID} EQUAL ${IDLIB_OPERATING_SYSTEM_ID_WINDOWS})
+  set("IDLIB_OPERATING_SYSTEM" "IDLIB_OPERATING_SYSTEM_WINDOWS")
+elseif (${idlib.OPERATING_SYSTEM_ID} EQUAL ${IDLIB_OPERATING_SYSTEM_ID_LINUX})
+  set("IDLIB_OPERATING_SYSTEM" "IDLIB_OPERATING_SYSTEM_LINUX")
+elseif (${idlib.OPERATING_SYSTEM_ID} EQUAL ${IDLIB_OPERATING_SYSTEM_ID_UNKNOWN})
+  set("IDLIB_OPERATING_SYSTEM" "IDLIB_OPERATING_SYSTEM_UNKNOWN")
+else()
+  message(FATAL_ERROR "operating system detection not executed")
+endif()
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/includes/Configure.h.in ${CMAKE_CURRENT_BINARY_DIR}/includes/Configure.h)
+
+target_include_directories(idlib PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/includes)
+list(APPEND idlib-headers "${CMAKE_CURRENT_BINARY_DIR}/includes/Configure.h")
+
+###############################################################################################################################################################
+
+list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib.h")
+list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib.c")
 
 list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/scalar.h")
 list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/scalar.c")
@@ -49,5 +104,5 @@ if(MSVC)
 
 endif()
 
-add_library(idlib STATIC ${idlib-headers} ${idlib-sources})
 target_include_directories(idlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/includes")
+target_sources(idlib PRIVATE ${idlib-headers} ${idlib-sources})
