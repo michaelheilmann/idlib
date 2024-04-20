@@ -492,6 +492,9 @@ idlib_matrix_4x4_f32_set_translate
     idlib_vector_3_f32 const* operand
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand);
+
   // first column
   target->e[0][0] = 1.f;
   target->e[1][0] = 0.f;
@@ -524,6 +527,8 @@ idlib_matrix_4x4_f32_set_rotation_x
     idlib_f32 operand
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+
   idlib_f32 a = idlib_deg_to_rad_f32(operand);
   idlib_f32 c = idlib_cos_f32(a);
   idlib_f32 s = idlib_sin_f32(a);
@@ -560,6 +565,8 @@ idlib_matrix_4x4_f32_set_rotation_y
     idlib_f32 operand
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+
   idlib_f32 a = idlib_deg_to_rad_f32(operand);
   idlib_f32 c = idlib_cos_f32(a);
   idlib_f32 s = idlib_sin_f32(a);
@@ -596,6 +603,8 @@ idlib_matrix_4x4_f32_set_rotation_z
     idlib_f32 operand
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+
   idlib_f32 a = idlib_deg_to_rad_f32(operand);
   idlib_f32 c = idlib_cos_f32(a);
   idlib_f32 s = idlib_sin_f32(a);
@@ -637,6 +646,8 @@ idlib_matrix_4x4_f32_set_orthographic
     idlib_f32 far
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+
   idlib_f32 a = right - left;
   idlib_f32 b = top - bottom;
   idlib_f32 c = far - near;
@@ -680,6 +691,8 @@ idlib_matrix_4x4_f32_set_perspective
     idlib_f32 far
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+
   field_of_view_y = idlib_deg_to_rad_f32(field_of_view_y); // rad(x) = x / 360 * 2 * PI = x * (PI * / 180)
   idlib_f32 f = 1.f / idlib_tan_f32(field_of_view_y / 2.f); // cot(x) = 1 / tan(x)
 
@@ -721,6 +734,10 @@ idlib_matrix_4x4_f32_multiply
     idlib_matrix_4x4_f32 const* operand2
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand1);
+  IDLIB_DEBUG_ASSERT(NULL != operand2);
+
   if (target != operand1 && target != operand2) {
     for (size_t i = 0; i < 4; ++i) {
       for (size_t j = 0; j < 4; ++j) {
@@ -758,6 +775,11 @@ idlib_matrix_4x4_f32_set_look_at
     idlib_vector_3_f32 const* operand3
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand1);
+  IDLIB_DEBUG_ASSERT(NULL != operand2);
+  IDLIB_DEBUG_ASSERT(NULL != operand3);
+
   idlib_vector_3_f32 forward, right, up1, up2;
   idlib_matrix_4x4_f32 r, t;
 
@@ -806,6 +828,9 @@ idlib_matrix_4x4_f32_set_scale
     idlib_vector_3_f32* operand
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand);
+
   // First column.
   target->e[0][0] = operand->e[0];
   target->e[1][0] = 0.f;
@@ -842,6 +867,9 @@ idlib_matrix_4x4_f32_negate
     idlib_matrix_4x4_f32 const* operand
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand);
+
   for (size_t i = 0; i < 4; ++i) {
     for (size_t j = 0; j < 4; ++j) {
       target->e[i][j] = -operand->e[i][j];
@@ -856,6 +884,9 @@ idlib_matrix_4x4_f32_transpose
     idlib_matrix_4x4_f32 const* operand
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand);
+
   /*
     * Given a matrix
     * (0,0)(0,1)(0,2)(0,3)
@@ -938,6 +969,10 @@ idlib_matrix_4x4_3f_transform_point
     idlib_vector_3_f32 const* operand2
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand1);
+  IDLIB_DEBUG_ASSERT(NULL != operand2);
+
   idlib_f32 e[3];
 
   e[0] = operand1->e[0][0] * operand2->e[0]
@@ -968,6 +1003,10 @@ idlib_matrix_4x4_3f_transform_direction
     idlib_vector_3_f32 const* operand2
   )
 {
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand1);
+  IDLIB_DEBUG_ASSERT(NULL != operand2);
+
   idlib_f32 e[3];
 
   e[0] = operand1->e[0][0] * operand2->e[0]
