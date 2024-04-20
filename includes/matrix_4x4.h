@@ -41,10 +41,10 @@ idlib_matrix_4x4_f32_set_identity
 /// @param operand Pointer to the idlib_vector_3_f32 object representing the translation vector.
 /// @remarks
 /// @code
-/// 1 0 0 x
-/// 0 1 0 y
-/// 0 0 1 z
-/// 0 0 0 1
+/// | 1 | 0 | 0 | x |
+/// | 0 | 1 | 0 | y |
+/// | 0 | 0 | 1 | z |
+/// | 0 | 0 | 0 | 1 |
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_translation
@@ -60,10 +60,10 @@ idlib_matrix_4x4_f32_set_translation
 /// @param a The angle of rotation, in degrees.
 /// @remarks
 /// @code
-/// 1 0  0 0
-/// 0 c -s 0
-/// 0 s  c 0
-/// 0 0  0 1
+/// | 1 | 0 |  0 | 0 |
+/// | 0 | c | -s | 0 |
+/// | 0 | s |  c | 0 |
+/// | 0 | 0 |  0 | 1 |
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_x
@@ -79,10 +79,10 @@ idlib_matrix_4x4_f32_set_rotation_x
 /// @param a The angle of rotation, in degrees.
 /// @remarks
 /// @code
-///  c 0  s 0
-///  0 1  0 0
-/// -s 0  c 0
-///  0 0  0 1
+/// |  c | 0 | s | 0 |
+/// |  0 | 1 | 0 | 0 |
+/// | -s | 0 | c | 0 |
+/// |  0 | 0 | 0 | 1 |
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_y
@@ -94,14 +94,14 @@ idlib_matrix_4x4_f32_set_rotation_y
 /// @since 1.0
 /// @brief Assign this matrix the values of transformation matrix representing
 /// a counter-clockwise rotation around the z-axis by the specified number of degrees.
-/// @param m A pointer to this matrix.
-/// @param a The angle of rotation, in degrees.
+/// @param target A pointer to this matrix.
+/// @param operand The angle of rotation, in degrees.
 /// @remarks
 /// @code
-/// c -s  0 0
-/// s  c  0 0
-/// 0  0  1 0
-/// 0  0  0 1
+/// | c | -s | 0 | 0 |
+/// | s |  c | 0 | 0 |
+/// | 0 |  0 | 1 | 0 |
+/// | 0 |  0 | 0 | 1 |
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_z
