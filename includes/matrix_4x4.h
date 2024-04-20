@@ -939,12 +939,12 @@ idlib_matrix_4x4_3f_transform_point
   )
 {
   idlib_f32 e[3];
-  
+
   e[0] = operand1->e[0][0] * operand2->e[0]
        + operand1->e[0][1] * operand2->e[1]
        + operand1->e[0][2] * operand2->e[2]
        + operand1->e[0][3] * 1.f;
-  
+
   e[1] = operand1->e[1][0] * operand2->e[0]
        + operand1->e[1][1] * operand2->e[1]
        + operand1->e[1][2] * operand2->e[2]
@@ -969,12 +969,12 @@ idlib_matrix_4x4_3f_transform_direction
   )
 {
   idlib_f32 e[3];
-  
+
   e[0] = operand1->e[0][0] * operand2->e[0]
        + operand1->e[0][1] * operand2->e[1]
        + operand1->e[0][2] * operand2->e[2]
        + operand1->e[0][3] * 0.f;
-  
+
   e[1] = operand1->e[1][0] * operand2->e[0]
        + operand1->e[1][1] * operand2->e[1]
        + operand1->e[1][2] * operand2->e[2]
