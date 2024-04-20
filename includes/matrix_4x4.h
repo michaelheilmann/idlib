@@ -26,7 +26,7 @@ typedef struct idlib_matrix_4x4_f32 {
 	idlib_f32 e[4][4];
 } idlib_matrix_4x4_f32;
 
-/// @since 0.1
+/// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of an identity matrix.
 /// @param target Pointer to the idlib_matrix_4x4_f32 object.
 static inline void
