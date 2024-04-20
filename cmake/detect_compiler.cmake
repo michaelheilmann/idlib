@@ -19,7 +19,7 @@
 # 3. This notice may not be removed or altered from any source distribution.
 #
 
-# Macro to define an enumeration of compilers and detect what compiler is used.
+# Macro to define an enumeration of C compilers and detect what C compiler is used.
 #
 # First, the enumeration constants ${target}_compiler_c_(unknown|clang|msvc|gcc) are defined.
 # Each constant is a string of an unique name identifying a C compiler.
@@ -41,7 +41,7 @@ macro(detect_c_compiler target)
   set(${target}.compiler_c_gcc "GCC")
 
   # Initialize if not yet initialized.
-  if (NOT DEFINED ${target_name}.compiler_c)
+  if (NOT DEFINED ${target}.compiler_c)
     set(${target}.compiler_c ${${target}.compiler_c_unknown})
   endif()
   # Perform detection.
