@@ -153,6 +153,46 @@ idlib_matrix_4x4_f32_set_ortho
 		idlib_f32 far
 	);
 
+/// @since 1.0
+/// @brief Assign this matrix the values of a perspective projection matrix.
+/// @param target A pointer to this matrix.
+/// @param field_of_view_y The field of view along the y-axis in degrees.
+/// In other terms: The angle, in degrees, in between a plane passing through the camera position as well as the top of your screen and another plane passing
+/// through the camera position and the bottom of your screen.  The bigger this angle is, the more you can see of the world - but at the same time, the objects
+/// you can see will become smaller.
+/// @param aspect_ratio The aspect ratio, that is, the ratio of the width to the height of the screen.
+/// An aspect ratio of x means that the width is x times the height.
+/// The aspect ratio is usually computed by width / height.
+/// @param near The distance to the near clip plane.
+/// @param far The distance to the far clip plane.
+/// @remarks
+/// @remarks
+/// This function creates the following matrix
+/// @code
+/// | f / aspectRatio | 0                       | 0                          0 |
+/// | 0               | f                       | 0                          0 |
+/// | 0               | 0 (far+near)/(near-far) | (2 * far *  near)/(near-far) |
+/// | 0               | 0                    -1 |                            0 |
+/// @endcode
+/// where
+/// @code
+/// f = cot(fieldOfVision/2)
+/// @endcode
+/// @remarks
+/// A few properties of the transformation
+/// - the positive z-axis points out of the screen (negative z-axis points into the screen)
+/// - the positive x-axis points to the right
+/// - the positive y-axis points to the top
+static inline void
+idlib_matrix_4x4_f32_set_perspective
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 field_of_view_y,
+		idlib_f32 aspect_ratio,
+		idlib_f32 near,
+		idlib_f32 far
+	);
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
 	(
@@ -370,6 +410,45 @@ idlib_matrix_4x4_f32_set_ortho
 	target->e[2][3] = w;
 	target->e[3][3] = 1.f;
 }
+
+inline void
+idlib_matrix_4x4_f32_set_perspective
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 field_of_view_y,
+		idlib_f32 aspect_ratio,
+		idlib_f32 near,
+		idlib_f32 far
+	)
+{
+	field_of_view_y = idlib_deg_to_rad_f32(field_of_view_y); // rad(x) = x / 360 * 2 * PI = x * (PI * / 180)
+	idlib_f32 f = 1.f / idlib_tan_f32(field_of_view_y / 2.f); // cot(x) = 1 / tan(x)
+
+	// column #1
+	target->e[0][0] = f / aspect_ratio;
+	target->e[1][0] = 0.f;
+	target->e[2][0] = 0.f;
+	target->e[3][0] = 0.f;
+
+	// column #2
+	target->e[0][1] = 0.f;
+	target->e[1][1] = f;
+	target->e[2][1] = 0.f;
+	target->e[3][1] = 0.f;
+
+	// column #3
+	target->e[0][2] = 0.f;
+	target->e[1][2] = 0.f;
+	target->e[2][2] = (far + near) / (near - far);
+	target->e[3][2] = -1.f;
+
+	// column #4
+	target->e[0][3] = 0.f;
+	target->e[1][3] = 0.f;
+	target->e[2][3] = (2.f * far * near) / (near - far); // - (2 far near) / (far - near)
+	target->e[3][3] = 0.f;
+}
+
 #if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
 	#pragma pop_macro("near")
 	#pragma pop_macro("far")
