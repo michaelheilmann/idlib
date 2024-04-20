@@ -12,6 +12,16 @@ typedef struct idlib_vector_3_f32 {
   idlib_f32 e[3];
 } idlib_vector_3_f32;
 
+/// @since 1.0
+/// Get the squared length of a idlib_vector_3_f32 object.
+/// @param operand A pointer to the idlib_vector_3_f32 object.
+/// @return The squared length of the idlib_Vector_3_f32 object pointed to by @a operand.
+static inline idlib_f32
+idlib_vector_3_f32_get_squared_length
+  (
+    idlib_vector_3_f32 const* operand
+  );
+
 /// @since 0.1
 /// Assign an idlib_vector_3_f32 object the specified scalar values.
 /// @param target A pointer to the idlib_vector_3_f32 object.
@@ -73,6 +83,19 @@ idlib_vector_3_are_equal
     idlib_vector_3_f32 const* operand1,
     idlib_vector_3_f32 const* operand2
   );
+
+static inline idlib_f32
+idlib_vector_3_f32_get_squared_length
+  (
+    idlib_vector_3_f32 const* operand
+  )
+{
+  IDLIB_DEBUG_ASSERT(NULL != operand);
+  idlib_f32 length_squared = operand->e[0] * operand->e[0]
+                           + operand->e[1] * operand->e[1]
+                           + operand->e[2] * operand->e[2];
+  return length_squared;
+}
 
 static inline void
 idlib_vector_3_f32_set
