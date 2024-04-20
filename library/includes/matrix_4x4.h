@@ -960,6 +960,7 @@ idlib_matrix_4x4_f32_transpose
       }
     }
 
+    #undef SWAP
     #if defined(_MSVC_VER)
     #pragma pop_macro("SWAP")
     #endif
@@ -983,6 +984,7 @@ idlib_matrix_4x4_f32_transpose
         SWAP(i, j);
       }
     }
+    #undef SWAP
 
     #if defined(_MSVC_VER)
     #pragma pop_macro("SWAP")
