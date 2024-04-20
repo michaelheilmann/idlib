@@ -77,6 +77,10 @@ list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/color.c")
 list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/version.h")
 list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/version.c")
 
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/colors.i")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/colors.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/colors.c")
+
 configure_warnings_and_errors(${name})
 
 target_sources(${name} PRIVATE ${${name}.configuration_files} ${${name}.header_files} ${${name}.source_files})
