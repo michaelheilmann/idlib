@@ -104,4 +104,33 @@ idlib_color_4_f32_set
 	target->a = operand4;
 }
 
+/**
+ * @since 1.3
+ * @brief Convert an RGB U8 to a RGBA F32 color.
+ * @param target A pointer to the idlib_color_4_f32 receiving the result.
+ * @param operand1 A pointer to the idlib_color_3_u8 color.
+ * @param operand2 The alpha component value.
+ */
+static inline void
+idlib_color_convert_3_u8_to_4_f32
+	(
+		idlib_color_4_f32* target,
+		idlib_color_3_u8* operand1,
+		idlib_f32 operand2
+	);
+
+static inline void
+idlib_color_convert_3_u8_to_4_f32
+	(
+		idlib_color_4_f32* target,
+		idlib_color_3_u8* operand1,
+		idlib_f32 operand2
+	)
+{
+	for (size_t i = 0; i < 3; ++i) {
+		target->components[i] = ((idlib_f32)operand1->components[i]) / 255.f;
+	}
+	target->components[3] = operand2;
+}
+
 #endif // IDLIB_COLOR_H_INCLUDED
