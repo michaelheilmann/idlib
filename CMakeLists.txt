@@ -75,6 +75,9 @@ list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/vector_2.c")
 list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/vector_3.h")
 list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/vector_3.c")
 
+list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/color.h")
+list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/color.c")
+
 list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/version.h")
 list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/version.c")
 

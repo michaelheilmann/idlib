@@ -10,6 +10,14 @@
 // NULL
 #include <stddef.h>
 
+// uint8_t
+#include <inttypes.h>
+
+
+/// @since 1.2
+/// Alias for uint8_t.
+typedef uint8_t idlib_u8;
+
 /// @since 1.0
 /// Alias for float.
 typedef float idlib_f32;
