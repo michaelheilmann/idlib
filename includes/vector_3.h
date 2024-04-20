@@ -137,8 +137,8 @@ static inline void
 idlib_vector_3_f32_cross
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand1,
-    idlib_vector_3_f32* operand2
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
   );
 
 static inline idlib_f32
@@ -283,8 +283,8 @@ static inline void
 idlib_vector_3_f32_cross
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand1,
-    idlib_vector_3_f32* operand2
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
   )
 {
   idlib_f32 t[3];
