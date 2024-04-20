@@ -948,11 +948,12 @@ idlib_matrix_4x4_f32_transpose
     #endif
 
     #define SWAP(x, y) \
-    { \
-      idlib_f32 t = operand->e[x][y]; \
-      target->e[x][y] = operand->e[y][x]; \
-      target->e[y][x] = t; \
-    }
+      { \
+        idlib_f32 t = operand->e[x][y]; \
+        target->e[x][y] = operand->e[y][x]; \
+        target->e[y][x] = t; \
+      }
+
     // rows from top to bottom
     for (size_t i = 0; i < 4; ++i) {
       for (size_t j = 1; j < i; ++j) {
@@ -961,6 +962,7 @@ idlib_matrix_4x4_f32_transpose
     }
 
     #undef SWAP
+
     #if defined(_MSVC_VER)
     #pragma pop_macro("SWAP")
     #endif
@@ -984,6 +986,7 @@ idlib_matrix_4x4_f32_transpose
         SWAP(i, j);
       }
     }
+    
     #undef SWAP
 
     #if defined(_MSVC_VER)
