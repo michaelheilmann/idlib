@@ -2,16 +2,9 @@
 #if !defined(IDLIB_H_INCLUDED)
 #define IDLIB_H_INCLUDED
 
+#include "scalar.h"
 #include "version.h"
 #include <assert.h>
-
-/// @since 1.0
-/// Alias for float.
-typedef float idlib_f32;
-
-/// @since 1.0
-/// Alias for double.
-typedef double idlib_f64;
 
 /// @since 1.0
 /// A row-major matrix with elements of type idlib_f32.

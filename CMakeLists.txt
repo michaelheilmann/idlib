@@ -8,6 +8,9 @@ project(idlib LANGUAGES C)
 set(idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib.h")
 set(idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib.c")
 
+list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/scalar.h")
+list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/scalar.c")
+
 list(APPEND idlib-headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/version.h")
 list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/version.c")
 
