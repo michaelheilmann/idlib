@@ -41,6 +41,63 @@ idlib_matrix_4x4_f32_set_translation
 		idlib_vector_3_f32* operand
 	);
 
+/// @since 1.0
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of a rotation matrix.
+/// @details The rotation matrix is a counter-clockwise rotation around the x-axis by the specified number of degrees.
+/// @param m A pointer to this matrix.
+/// @param a The angle of rotation, in degrees.
+/// @remarks
+/// @code
+/// 1 0  0 0
+/// 0 c -s 0
+/// 0 s  c 0
+/// 0 0  0 1
+/// @endcode
+static inline void
+idlib_matrix_4x4_f32_set_rotation_x
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 operand
+	);
+
+/// @since 1.0
+/// @brief Assign this matrix the values of transformation matrix representing
+/// a counter-clockwise rotation around the y-axis by the specified number of degrees.
+/// @param m A pointer to this matrix.
+/// @param a The angle of rotation, in degrees.
+/// @remarks
+/// @code
+///  c 0  s 0
+///  0 1  0 0
+/// -s 0  c 0
+///  0 0  0 1
+/// @endcode
+static inline void
+idlib_matrix_4x4_f32_set_rotation_y
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 operand
+	);
+
+/// @since 1.0
+/// @brief Assign this matrix the values of transformation matrix representing
+/// a counter-clockwise rotation around the z-axis by the specified number of degrees.
+/// @param m A pointer to this matrix.
+/// @param a The angle of rotation, in degrees.
+/// @remarks
+/// @code
+/// c -s  0 0
+/// s  c  0 0
+/// 0  0  1 0
+/// 0  0  0 1
+/// @endcode
+static inline void
+idlib_matrix_4x4_f32_set_rotation_z
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 operand
+	);
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
 	(
@@ -103,6 +160,114 @@ idlib_matrix_4x4_f32_set_translation
 	target->e[0][3] = operand->e[0];
 	target->e[1][3] = operand->e[1];
 	target->e[2][3] = operand->e[2];
+	target->e[3][3] = 1.f;
+}
+
+static inline void
+idlib_matrix_4x4_f32_set_rotation_x
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 operand
+	)
+{
+	idlib_f32 a = idlib_deg_to_rad_f32(operand);
+	idlib_f32 c = idlib_cos_f32(a);
+	idlib_f32 s = idlib_sin_f32(a);
+
+	// First column.
+	target->e[0][0] = 1.f;
+	target->e[1][0] = 0.f;
+	target->e[2][0] = 0.f;
+	target->e[3][0] = 0.f;
+
+	// Second column.
+	target->e[0][1] = 0.f;
+	target->e[1][1] = c;
+	target->e[2][1] = s;
+	target->e[3][1] = 0.f;
+
+	// Third column.
+	target->e[0][2] = 0.f;
+	target->e[1][2] = -s;
+	target->e[2][2] = c;
+	target->e[3][2] = 0.f;
+
+	// Fourth column.
+	target->e[0][3] = 0.f;
+	target->e[1][3] = 0.f;
+	target->e[2][3] = 0.f;
+	target->e[3][3] = 1.f;
+}
+
+static inline void
+idlib_matrix_4x4_f32_set_rotation_y
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 operand
+	)
+{
+	idlib_f32 a = idlib_deg_to_rad_f32(operand);
+	idlib_f32 c = idlib_cos_f32(a);
+	idlib_f32 s = idlib_sin_f32(a);
+
+	// First column.
+	target->e[0][0] = c;
+	target->e[1][0] = 0.f;
+	target->e[2][0] = -s;
+	target->e[3][0] = 0.f;
+
+	// Second column.
+	target->e[0][1] = 0.f;
+	target->e[1][1] = 1.f;
+	target->e[2][1] = 0.f;
+	target->e[3][1] = 0.f;
+
+	// Third column.
+	target->e[0][2] = s;
+	target->e[1][2] = 0.f;
+	target->e[2][2] = c;
+	target->e[3][2] = 0.f;
+
+	// Fourth column.
+	target->e[0][3] = 0.f;
+	target->e[1][3] = 0.f;
+	target->e[2][3] = 0.f;
+	target->e[3][3] = 1.f;
+}
+
+static inline void
+idlib_matrix_4x4_f32_set_rotation_z
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_f32 operand
+	)
+{
+	idlib_f32 a = idlib_deg_to_rad_f32(operand);
+	idlib_f32 c = idlib_cos_f32(a);
+	idlib_f32 s = idlib_sin_f32(a);
+
+	// First column.
+	target->e[0][0] = c;
+	target->e[1][0] = s;
+	target->e[2][0] = 0.f;
+	target->e[3][0] = 0.f;
+
+	// Second column.
+	target->e[0][1] = -s;
+	target->e[1][1] = c;
+	target->e[2][1] = 0.f;
+	target->e[3][1] = 0.f;
+
+	// Third column.
+	target->e[0][2] = 0.f;
+	target->e[1][2] = 0.f;
+	target->e[2][2] = 1.f;
+	target->e[3][2] = 0.f;
+
+	// Fourth column.
+	target->e[0][3] = 0.f;
+	target->e[1][3] = 0.f;
+	target->e[2][3] = 0.f;
 	target->e[3][3] = 1.f;
 }
 
