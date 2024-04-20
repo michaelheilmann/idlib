@@ -12,8 +12,9 @@ include(${CMAKE_CURRENT_LIST_DIR}/cmake/all.cmake)
 set(name idlib)
 
 add_library(${name} STATIC)
-set(${name}.sources "")
-set(${name}.headers "")
+set(${name}.source_files "")
+set(${name}.header_files "")
+set(${name}.configuration_files "")
 
 define_languages(${name})
 detect_c_compiler(${name})
@@ -53,30 +54,36 @@ endif()
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/includes/configure.h.in ${CMAKE_CURRENT_BINARY_DIR}/includes/configure.h)
 
 target_include_directories(${name} PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/includes)
-list(APPEND ${name}.headers "${CMAKE_CURRENT_BINARY_DIR}/includes/configure.h")
+list(APPEND ${name}.configuration_files "${CMAKE_CURRENT_BINARY_DIR}/includes/configure.h")
 
-list(APPEND ${name}.headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib.h")
-list(APPEND ${name}.sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib.c")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib.c")
 
-list(APPEND ${name}.headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/scalar.h")
-list(APPEND ${name}.sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/scalar.c")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/scalar.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/scalar.c")
 
-list(APPEND ${name}.headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/matrix_4x4.h")
-list(APPEND ${name}.sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/matrix_4x4.c")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/matrix_4x4.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/matrix_4x4.c")
 
-list(APPEND ${name}.headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/vector_2.h")
-list(APPEND ${name}.sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/vector_2.c")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/vector_2.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/vector_2.c")
 
-list(APPEND ${name}.headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/vector_3.h")
-list(APPEND ${name}.sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/vector_3.c")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/vector_3.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/vector_3.c")
 
-list(APPEND ${name}.headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/color.h")
-list(APPEND ${name}.sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/color.c")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/color.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/color.c")
 
-list(APPEND ${name}.headers "${CMAKE_CURRENT_SOURCE_DIR}/includes/version.h")
-list(APPEND ${name}.sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/version.c")
+list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/version.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/version.c")
 
 configure_warnings_and_errors(${name})
 
+target_sources(${name} PRIVATE ${${name}.configuration_files} ${${name}.header_files} ${${name}.source_files})
+
+source_group(TREE ${CMAKE_CURRENT_BINARY_DIR} FILES ${${name}.configuration_files})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${${name}.header_files})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${${name}.source_files})
+
 target_include_directories(${name} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/includes")
-target_sources(${name} PRIVATE ${${name}.headers} ${${name}.sources})
+#target_source_files(${name} PRIVATE ${${name}.header_files} ${${name}.source_files})
