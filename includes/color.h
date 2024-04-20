@@ -53,6 +53,54 @@ idlib_color_3_u8_set
 }
 
 /**
+ * @since 1.3
+ * @brief
+ * Representation of a color consisting of three components, red, green, and blue.
+ * The component values are layed out consecutively in memory and are of type idlib_f32 where
+ * 0 denotes the minimum intensity and 1 denotes the maximum intensity.
+ */
+typedef struct idlib_color_3_f32 {
+	union {
+		struct {
+			idlib_f32 r, g, b;
+		};
+		idlib_f32 components[3];
+	};
+} idlib_color_3_f32;
+
+/**
+ * @since 1.2
+ * @brief Assign an idlib_color_3_f32 object the specified component values.
+ * @param target Pointer to the idlib_matrix_4x4_f32 object.
+ * @param operand1 The value to be assigned to the "red" component.
+ * @param operand2 The value to be assigned to the "green" component.
+ * @param operand3 The value to be assigned to the "blue" component.
+ */
+static inline void
+idlib_color_3_f32_set
+	(
+		idlib_color_3_f32* target,
+		idlib_f32 operand1,
+		idlib_f32 operand2,
+		idlib_f32 operand3
+	);
+
+static inline void
+idlib_color_3_f32_set
+	(
+		idlib_color_3_f32* target,
+		idlib_f32 operand1,
+		idlib_f32 operand2,
+		idlib_f32 operand3
+	)
+{
+	IDLIB_DEBUG_ASSERT(NULL != target);
+	target->r = operand1;
+	target->g = operand2;
+	target->b = operand3;
+}
+
+/**
  * @since 1.2
  * @brief
  * Representation of a color consisting of three components, red, green, blue, and alpha.
