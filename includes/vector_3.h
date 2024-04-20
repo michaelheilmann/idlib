@@ -14,7 +14,7 @@ typedef struct idlib_vector_3_f32 {
 
 /// @since 1.0
 /// @brief Get the squared length of a idlib_vector_3_f32 object.
-/// @param operand A pointer to the idlib_vector_3_f32 object.
+/// @param operand A pointer to the idlib_vector_3_f32 object of which the squared length is computed.
 /// @return The squared length of the idlib_Vector_3_f32 object pointed to by @a operand.
 static inline idlib_f32
 idlib_vector_3_f32_get_squared_length
@@ -24,7 +24,7 @@ idlib_vector_3_f32_get_squared_length
 
 /// @since 1.0
 /// @brief Get the length of a idlib_vector_3_f32 object.
-/// @param operand A pointer to the idlib_vector_3_f32 object.
+/// @param operand A pointer to the idlib_vector_3_f32 object of which the length is computed.
 /// @return The length of the idlib_Vector_3_f32 object pointed to by @a operand.
 static inline idlib_f32
 idlib_vector_3_f32_get_length
@@ -35,11 +35,9 @@ idlib_vector_3_f32_get_length
 /// @since 1.0
 /// @brief Get the normalized vector for a vector.
 /// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
-/// @param operand Pointer to the idlib_vector_3_f32 object of which the normalized vector is computed.
+/// @param operand Pointer to the idlib_vector_3_f32 object of which normalized vector is computed.
 /// @return @a false if the vector represented by @a operand, @a true otherwise.
 /// If @a false is returned, then *target was assigned a copy of @a operand.
-/// @remarks
-/// "represented by @a operand" actually means "represented by the object pointed to by @a operand".
 static inline bool
 idlib_vector_3_f32_normalize
   (
@@ -49,7 +47,7 @@ idlib_vector_3_f32_normalize
 
 /// @since 0.1
 /// @brief Assign an idlib_vector_3_f32 object the specified scalar values.
-/// @param target Pointer to the idlib_vector_3_f32 object.
+/// @param target Pointer to the idlib_vector_3_f32 object to assign the vector <code>(x,y,z)</code> to.
 /// @param x, y, z The scalar values.
 static inline void
 idlib_vector_3_f32_set
@@ -62,7 +60,7 @@ idlib_vector_3_f32_set
 
 /// @since 0.1
 /// @brief Assign an idlib_vector_3_f32 object the values of an zero vector.
-/// @param target Pointer to the idlib_vector_3_f32 object.
+/// @param target Pointer to the idlib_vector_3_f32 object to assign the vector <code>(0,0,0)</code> to.
 static inline void
 idlib_vector_3_f32_set_zero
   (
@@ -112,8 +110,8 @@ idlib_vector_3_f32_are_equal
 /// @since 1.0
 /// Linear interpolation between two vectors.
 /// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
-/// @param operand1 Pointer to an idlib_vector_3_f32 object, the first operand.
-/// @param operand2 Pointer to an idlib_vector_3_f32 object, the second operand.
+/// @param operand1 Pointer to an idlib_vector_3_f32 object that is the start of the interpolation.
+/// @param operand2 Pointer to an idlib_vector_3_f32 object that is the end of the interpolation.
 /// @param operand3 idlib_f32 value, the interpolation factor.
 /// @remarks
 /// The interpolation factor is clamped to [0,1].
@@ -130,8 +128,8 @@ idlib_vector_3_f32_lerp
 /// @since 1.0
 /// @brief Compute the cross product of two vectors.
 /// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
-/// @param operand1 Pointer to an idlib_vector_3_f32 object, the first operand.
-/// @param operand2 Pointer to an idliv_vector_3_f32 object, the second operand.
+/// @param operand1 Pointer to an idlib_vector_3_f32 object that is the multiplier (aka first term).
+/// @param operand2 Pointer to an idliv_vector_3_f32 object, the is the multiplicand (aka second term).
 /// @remarks @a target, @a operand1, and @a operand2 all may refer to the same idlib_vector_3_f32 object.
 static inline void
 idlib_vector_3_f32_cross
