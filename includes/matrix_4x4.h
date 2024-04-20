@@ -193,6 +193,20 @@ idlib_matrix_4x4_f32_set_perspective
 		idlib_f32 far
 	);
 
+/// @since 1.0
+/// @brief Compute the product of two matrices.
+/// @param target Pointer to a idlib_matrix_4x4_f32 object to assign the result to.
+/// @param operand1 Pointer to a idlib_matrix_4x4_f32 object, the multiplier (first operand).
+/// @param operand2 Pointer to a idlib_matrix_4x4_f32 object, the multiplicand (second operand).
+/// @remarks @a target, @a operand1, and @a operand2 all may refer to the same object.
+static inline void
+idlib_matrix_4x4_f32_multiply
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_matrix_4x4_f32 const* operand1,
+		idlib_matrix_4x4_f32 const* operand2
+	);
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
 	(
@@ -453,5 +467,41 @@ idlib_matrix_4x4_f32_set_perspective
 	#pragma pop_macro("near")
 	#pragma pop_macro("far")
 #endif
+
+static inline void
+idlib_matrix_4x4_f32_multiply
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_matrix_4x4_f32 const* operand1,
+		idlib_matrix_4x4_f32 const* operand2
+	)
+{
+	if (target != operand1 && target != operand2) {
+		for (size_t i = 0; i < 4; ++i) {
+			for (size_t j = 0; j < 4; ++j) {
+				target->e[i][j] = 0.f;
+				for (size_t k = 0; k < 4; ++k) {
+					target->e[i][j] += operand1->e[i][k] * operand2->e[k][j];
+				}
+			}
+		}
+	} else {
+		idlib_f32 t[4][4];
+
+		for (size_t i = 0; i < 4; ++i) {
+			for (size_t j = 0; j < 4; ++j) {
+				t[i][j] = 0.f;
+				for (size_t k = 0; k < 4; ++k) {
+					t[i][j] += operand1->e[i][k] * operand2->e[k][j];
+				}
+			}
+		}
+		for (size_t i = 0; i < 4; ++i) {
+			for (size_t j = 0; j < 4; ++j) {
+				target->e[i][j] = t[i][j];
+			}
+		}
+	}
+}
 
 #endif // IDLIB_MATRIX_4X4_H_INCLUDED
