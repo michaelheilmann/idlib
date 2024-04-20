@@ -3,6 +3,8 @@
 #define IDLIB_H_INCLUDED
 
 #include "scalar.h"
+#include "vector_2.h"
+#include "vector_3.h"
 #include "version.h"
 #include <assert.h>
 
@@ -47,49 +49,6 @@ idlib_matrix_4x4_f32_set_identity
 	a->e[1][3] = 0.f;
 	a->e[2][3] = 1.0f;
 	a->e[2][3] = 0.f;
-}
-
-/// @since 1.0
-/// A two component vector with elements of type idlib_f32.
-typedef struct idlib_vector_2_f23 {
-	idlib_f32 e[2];
-} idlib_vector_2_f32;
-
-/// @since 0.1
-/// Assign an idlib_vector_2_f32 object the values of an zero vector.
-/// @param m A pointer to the idlib_vector_2_f32 object.
-static inline void
-idlib_vector_2_f32_set_zero
-	(
-		idlib_vector_2_f32* a
-	)
-{
-	assert(NULL != a);
-	
-	a->e[0] = 0.f;
-	a->e[1] = 0.f;
-}
-
-/// @since 0.1
-/// A three component vector with elements of type idlib_f32.
-typedef struct idlib_vector_3_f32 {
-	idlib_f32 e[3];
-} idlib_vector_3_f32;
-
-/// @since 0.1
-/// Assign an idlib_vector32_f32 object the values of an zero vector.
-/// @param m A pointer to the idlib_vector_3_f32 object.
-static inline void
-idlib_vector_3_f32_set_zero
-	(
-		idlib_vector_3_f32* a
-	)
-{
-	assert(NULL != a);
-	
-	a->e[0] = 0.f;
-	a->e[1] = 0.f;
-	a->e[2] = 0.f;
 }
 
 #endif // IDLIB_H_INCLUDED
