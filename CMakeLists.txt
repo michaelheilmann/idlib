@@ -21,7 +21,7 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-project(idlib-math LANGUAGES C)
+project(idlib-math LANGUAGES C CXX ASM)
 
 set(idlib-math-cmake-files-dir ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 

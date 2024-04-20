@@ -58,3 +58,43 @@ macro(detect_c_compiler target)
   endif()
   message( STATUS " - ${target} C compiler: ${${target}.compiler_c}")
 endmacro()
+
+# Macro to define an enumeration of C++ compilers and detect what C++ compiler is used.
+#
+# First, the enumeration constants ${target}_compiler_cpp_(unknown|clang|msvc|gcc) are defined.
+# Each constant is a string of an unique name identifying a C++ compiler.
+#
+# Second, the constant ${target}.compiler_cpp is set to the {target}.compiler_cpp_* values denoting the detected C++ compiler.
+#
+# @param target The target.
+macro(detect_cpp_compiler target)
+  # An unknown compiler.
+  set(${target}.compiler_cpp_unknown "<unknown>")
+
+  # CLANG.
+  set(${target}.compiler_cpp_clang "CLANG")
+
+  # MSVC.
+  set(${target}.compiler_cpp_msvc "MSVC")
+
+  # GCC.
+  set(${target}.compiler_cpp_gcc "GCC")
+
+  # Initialize if not yet initialized.
+  if (NOT DEFINED ${target}.compiler_cpp)
+    set(${target}.compiler_cpp ${${target}.compiler_cpp_unknown})
+  endif()
+  if (CMAKE_CXX_COMPILER_ID)
+    if (CMAKE_CXX_COMPILER_ID MATCHES ".*clang")
+      set(${target}.compiler_cpp ${${target}.compiler_cpp_clang})
+    endif()
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+      set(${target}.compiler_cpp ${${target}.compiler_cpp_gcc})
+    endif()
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+      set(${target}.compiler_cpp ${${target}.compiler_cpp_msvc})
+    endif()
+  endif()
+  message( STATUS " - ${target} C++ compiler: ${${target}.compiler_cpp}")
+
+endmacro()
