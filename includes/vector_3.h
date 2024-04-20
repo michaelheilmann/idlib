@@ -44,7 +44,7 @@ static inline bool
 idlib_vector_3_f32_normalize
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand
+    idlib_vector_3_f32 const* operand
   );
 
 /// @since 0.1
@@ -165,7 +165,7 @@ static inline bool
 idlib_vector_3_f32_normalize
   (
     idlib_vector_3_f32* target,
-    idlib_vector_3_f32* operand
+    idlib_vector_3_f32 const* operand
   )
 {
   idlib_f32 sql = idlib_vector_3_f32_get_squared_length(operand);
