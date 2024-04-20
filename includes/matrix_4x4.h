@@ -291,6 +291,19 @@ idlib_matrix_4x4_f32_transpose
     idlib_matrix_4x4_f32 const* operand
   );
 
+/// @since 1.3
+/// @brief Transform a position vector.
+/// @param target Pointer to an idlib_vector_3_f32 object receiving the result.
+/// @param operand1 Pointer to an idlib_matrix_4x4_f32 object, the multiplier (first operand).
+/// @param operand2 Pointer to an idlib_vector_3_f32 object, the multiplicand (second operand).
+static inline void
+idlib_matrix_4x4_3f_transform_point
+  (
+    idlib_vector_3_f32* target,
+    idlib_matrix_4x4_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
+  );
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
   (
@@ -767,6 +780,36 @@ idlib_matrix_4x4_f32_transpose
     #pragma pop_macro("SWAP")
     #endif
   }
+}
+
+static inline void
+idlib_matrix_4x4_3f_transform_point
+  (
+    idlib_vector_3_f32* target,
+    idlib_matrix_4x4_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2
+  )
+{
+  idlib_f32 e[3];
+  
+  e[0] = operand1->e[0][0] * operand2->e[0]
+       + operand1->e[0][1] * operand2->e[1]
+       + operand1->e[0][2] * operand2->e[2]
+       + operand1->e[0][3] * 1.f;
+  
+  e[1] = operand1->e[1][0] * operand2->e[0]
+       + operand1->e[1][1] * operand2->e[1]
+       + operand1->e[1][2] * operand2->e[2]
+       + operand1->e[1][3] * 1.f;
+
+  e[2] = operand1->e[2][0] * operand2->e[0]
+       + operand1->e[2][1] * operand2->e[1]
+       + operand1->e[2][2] * operand2->e[2]
+       + operand1->e[2][3] * 1.f;
+
+  target->e[0] = e[0];
+  target->e[1] = e[1];
+  target->e[2] = e[2];
 }
 
 #endif // IDLIB_MATRIX_4X4_H_INCLUDED
