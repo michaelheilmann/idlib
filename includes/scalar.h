@@ -47,7 +47,7 @@ typedef double idlib_f64;
 /** 
  * @since 1.0
  * Convert an angle in degrees into the corresponding angle in radians.
- * @param a The angle in degrees.
+ * @param operand The angle in degrees.
  * @return The corresponding angle in radians.
  */
 static inline idlib_f32
@@ -60,14 +60,14 @@ idlib_deg_to_rad_f32
 /** 
  * @since 1.0
  * Convert an angle in degrees into the corresponding angle in radians.
- * @param a The angle in degrees.
+ * @param operand The angle in degrees.
  * @return The corresponding angle in radians.
  */
 static inline idlib_f64
 idlib_deg_to_rad_f64
   (
-    idlib_f64 x
+    idlib_f64 operand
   )
-{ return (x / 180.) * IDLIB_PI_F64; }
+{ return (operand / 180.) * IDLIB_PI_F64; }
 
 #endif // IDLIB_SCALAR_H_INCLUDED
