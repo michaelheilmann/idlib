@@ -1,33 +1,34 @@
 # Copyright (c) 2018-2024 Michael Heilmann. All rights reserved.
 
-# Enumeration of known/instruction set architectures.
-
-# Unknown instruction set architecture.
-set(IDLIB_INSTRUCTION_SET_ARCHITECTURE_STRING_UNKNOWN "<unknown instruction set architecture>")
-set(IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_UNKNOWN 0)
-
-# x86.
-set(IDLIB_INSTRUCTION_SET_ARCHITECTURE_STRING_X86 "x86")
-set(IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_X86 1)
-
-# x64.
-set(IDLIB_INSTRUCTION_SET_ARCHITECTURE_STRING_X64 "x64")
-set(IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_X64 2)
-
-# Macro to define ${target}.instruction_set_architecture.
+# Macro to define an enumeration of instruction set architectures
+# ${target}.instruction_set_architecture_(string|id)_(x86|x64)
+# Macro to define
+# ${target}.instruction_set_architecture_(string|id)
 # @param target The target.
-macro(idlib_detect_instruction_set_architecture target)
+macro(detect_instruction_set_architecture target)
+  # Unknown instruction set architecture.
+  set(${target}.instruction_set_architecture_string_unknown "<unknown instruction set architecture>")
+  set(${target}.instruction_set_architecture_id_unknown 0)
+
+  # x86.
+  set(${target}.instruction_set_architecture_string_x86 "x86")
+  set(${target}.instruction_set_architecture_id_x86 1)
+
+  # x64.
+  set(${target}.instruction_set_architecture_string_x64 "x64")
+  set(${target}.instruction_set_architecture_id_x64 2)
+
   # Initialize if not yet initialized.
-  if (NOT DEFINED ${target_name}.COMPILER_C_ID)
-    set(${target}.INSTRUCTION_SET_ARCHITECTURE_ID ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_UNKNOWN})
-    set(${target}.INSTRUCTION_SET_ARCHITECTURE_STRING ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_STRING_UNKNOWN})
+  if (NOT DEFINED ${target_name}.compiler_c_id)
+    set(${target}.instruction_set_architecture_id ${${target}.instruction_set_architecture_id_unknown})
+    set(${target}.instruction_set_architecture_string ${${target}.instruction_set_architecture_string_unknown})
   endif()
   if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    set(${target}.INSTRUCTION_SET_ARCHITECTURE_ID ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_X64})
-	  set(${target}.INSTRUCTION_SET_ARCHITECTURE_STRING ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_STRING_X64})
+    set(${target}.instruction_set_architecture_id ${${target}.instruction_set_architecture_id_x64})
+    set(${target}.instruction_set_architecture_string ${${target}.instruction_set_architecture_string_x64})
   elseif (CMAKE_SIZEOF_VOID_P EQUAL 4)
-    set(${target}.INSTRUCTION_SET_ARCHITECTURE_ID ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_ID_X86})
-	  set(${target}.INSTRUCTION_SET_ARCHITECTURE_STRING ${IDLIB_INSTRUCTION_SET_ARCHITECTURE_STRING_X86})
+    set(${target}.instruction_set_architecture_id ${${target}.instruction_set_architecture_id_x86})
+    set(${target}.instruction_set_architecture_string ${${target}.instruction_set_architecture_string_x86})
   endif()
-  message( STATUS " - instruction set architecture: ${${target}.INSTRUCTION_SET_ARCHITECTURE_STRING}")
+  message( STATUS " - ${target} instruction set architecture: ${${target}.instruction_set_architecture_string}")
 endmacro()

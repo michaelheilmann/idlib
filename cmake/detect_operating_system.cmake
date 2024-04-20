@@ -1,66 +1,68 @@
 # Copyright (c) 2018-2024 Michael Heilmann. All rights reserved.
 
-# PROBLEMS: 
-# - "MINGW" and/or "MSYS" is a "toolchain". The "operating system" is still "windows".
+# Macro to define an enumeration of operating systems
+# ${target}.operating_system_(id|string)_(unknown|windows|unix|linux|macos|cygwin|msys|mingw|ios|ios_simulator)
+# Macro to define
+# ${target}.operating_system_(id|string)
+# @param target The target.
+# @remarks
+# - "mingw" and/or "msys" is a "toolchain". The "operating system" is still "windows".
 # - We are not aware of a reliable procedure to detect what Apple "operating system" is used.
 #   This configuration script detects "Mac OS" even if the "operating system" is "iOS", "iOS Simulator", "watchOS", ... from within CMake?
+macro(detect_operating_system target)
+  set(${target}.operating_system_id_unknown 0)
+  set(${target}.operating_system_string_unknown "<unknown operating system>")
 
-set(IDLIB_OPERATING_SYSTEM_ID_UNKNOWN 0)
-set(IDLIB_OPERATING_SYSTEM_STRING_UNKNOWN "<unknown operating system>")
+  set(${target}.operating_system_id_windows 1)
+  set(${target}.operating_system_string_windows "WINDOWS")
 
-set(IDLIB_OPERATING_SYSTEM_ID_WINDOWS 1)
-set(IDLIB_OPERATING_SYSTEM_STRING_WINDOWS "WINDOWS")
+  set(${target}.operating_system_id_unix 2)
+  set(${target}.operating_system_string_unix "UNIX")
 
-set(IDLIB_OPERATING_SYSTEM_ID_UNIX 2)
-set(IDLIB_OPERATING_SYSTEM_STRING_UNIX "UNIX")
+  set(${target}.operating_system_id_linux 3)
+  set(${target}.operating_system_string_linux "LINUX")
 
-set(IDLIB_OPERATING_SYSTEM_ID_LINUX 3)
-set(IDLIB_OPERATING_SYSTEM_STRING_LINUX "LINUX")
+  set(${target}.operating_system_id_macos 4)
+  set(${target}.operating_system_string_macos "MACOS")
 
-set(IDLIB_OPERATING_SYSTEM_ID_MACOS 4)
-set(IDLIB_OPERATING_SYSTEM_STRING_MACOS "MACOS")
+  set(${target}.operating_system_id_cygwin 5)
+  set(${target}.operating_system_string_cygwin "CYGWIN")
 
-set(IDLIB_OPERATING_SYSTEM_ID_CYGWIN 5)
-set(IDLIB_OPERATING_SYSTEM_STRING_CYGWIN "CYGWIN")
+  set(${target}.operating_system_id_msys 6)
+  set(${target}.operating_system_string_msys "MSYS")
 
-set(IDLIB_OPERATING_SYSTEM_ID_MSYS 6)
-set(IDLIB_OPERATING_SYSTEM_STRING_MSYS "MSYS")
+  set(${target}.operating_system_id_mingw 7)
+  set(${target}.operating_system_string_mingw "MINGW")
 
-set(IDLIB_OPERATING_SYSTEM_ID_MINGW 7)
-set(IDLIB_OPERATING_SYSTEM_STRING_MINGW "MINGW")
+  set(${target}.operating_system_id_ios 8)
+  set(${target}.operating_system_string_ios "IOS")
 
-set(IDLIB_OPERATING_SYSTEM_ID_IOS 8)
-set(IDLIB_OPERATING_SYSTEM_STRING_IOS "IOS")
+  set(${target}.operating_system_id_ios_simulator 9)
+  set(${target}.operating_system_string_ios_simulator "IOS SIMULATOR")
 
-set(IDLIB_OPERATING_SYSTEM_ID_IOS_SIMULATOR 9)
-set(IDLIB_OPERATING_SYSTEM_STRING_IOS_SIMULATOR "IOS SIMULATOR")
-
-
-# Detect the operating system for the specified target by defining
-macro(idlib_detect_operating_system target)
-  if (NOT DEFINED ${target}.OPERATING_SYSTEM_ID)  
-    set(${target}.OPERATING_SYSTEM_ID ${IDLIB_OPERATING_SYSTEM_ID_UNKNOWN})
-    set(${target}.OPERATING_SYSTEM_STRING ${IDLIB_OPERATING_SYSTEM_STRING_UNKNOWN})
+  if (NOT DEFINED ${target}.operating_system_id)  
+    set(${target}.operating_system_id ${${target}.operating_system_id_unknown})
+    set(${target}.operating_system_string ${${target}.operating_system_string_unknown})
     if (WIN32)
-      set(${target}.OPERATING_SYSTEM_ID ${IDLIB_OPERATING_SYSTEM_ID_WINDOWS})
-      set(${target}.OPERATING_SYSTEM_STRING ${IDLIB_OPERATING_SYSTEM_STRING_WINDOWS})
+      set(${target}.operating_system_id ${${target}.operating_system_id_windows})
+      set(${target}.operating_system_string ${${target}.operating_system_string_windows})
     elseif (CYGWIN)
-      set(${target}.OPERATING_SYSTEM_ID ${IDLIB_OPERATING_SYSTEM_ID_CYGWIN})
-      set(${target}.OPERATING_SYSTEM_STRING ${IDLIB_OPERATING_SYSTEM_STRING_CYGWIN})  
+      set(${target}.operating_system_id ${${target}.operating_system_id_cygwin})
+      set(${target}.operating_system_string ${${target}.operating_system_string_cygwin}})  
     elseif (MSYS)
-      set(${target}.OPERATING_SYSTEM_ID ${IDLIB_OPERATING_SYSTEM_ID_MSYS})
-      set(${target}.OPERATING_SYSTEM_STRING ${IDLIB_OPERATING_SYSTEM_STRING_MSYS})
+      set(${target}.operating_system_id ${${target}.operating_system_id_msys})
+      set(${target}.operating_system_string ${${target}.operating_system_string_msys})
     endif()
 
-    if (${${target}.OPERATING_SYSTEM_ID} EQUAL ${IDLIB_OPERATING_SYSTEM_ID_UNKNOWN})
+    if (${${target}.operating_system_id} EQUAL ${${target}.operating_system_id_unknown})
       if("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
-        set(${target}.OPERATING_SYSTEM_ID ${IDLIB_OPERATING_SYSTEM_ID_LINUX})
-        set(${target}.OPERATING_SYSTEM_STRING ${IDLIB_OPERATING_SYSTEM_STRING_LINUX})
+        set(${target}.operating_system_id ${${target}.operating_system_id_linux})
+        set(${target}.operating_system_string ${${target}.operating_system_string_linux})
       elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
-        set(${target}.OPERATING_SYSTEM_ID ${IDLIB_OPERATING_SYSTEM_ID_MACOS})
-        set(${target}.OPERATING_SYSTEM_STRING ${IDLIB_OPERATING_SYSTEM_STRING_MACOS})
+        set(${target}.operating_system_id ${${target}.operating_system_id_macos})
+        set(${target}.operating_system_string ${${target}.operating_system_string_macos})
       endif()
     endif()
   endif()
-  message(STATUS " - operating system: ${${target}.OPERATING_SYSTEM_STRING}")
+  message(STATUS " - ${target} operating system: ${${target}.operating_system_string}")
 endmacro()
