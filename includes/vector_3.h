@@ -329,6 +329,6 @@ idlib_vector_3_f32_get_data
   (
     idlib_vector_3_f32* operand
   )
-{ return &(operand->e[0]); } 
+{ return &(operand->e[0]); }
 
 #endif // IDLIB_VECTOR_3_H_INCLUDED
