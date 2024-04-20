@@ -166,4 +166,38 @@ idlib_tan_f64
     idlib_f64 operand
   );
 
+/**
+ * @since 1.0
+ * @brief Clamp a value to the range [0,1].
+ * @param operand The value to be clamped.
+ * @return The clamped value.
+ */
+static inline idlib_f32
+idlib_clamp_f32
+  (
+    idlib_f32 operand
+  )
+{
+  if (operand < 0.f) return 0.f;
+  else if (operand > 1.f) return 1.f;
+  else return operand;
+}
+
+/**
+ * @since 1.0
+ * @brief Clamp a value to the range [0,1].
+ * @param operand The value to be clamped.
+ * @return The clamped value.
+ */
+static inline idlib_f64
+idlib_clamp_f64
+  (
+    idlib_f64 operand
+  )
+{
+  if (operand < 0.) return 0.;
+  else if (operand > 1.) return 1.;
+  else return operand;
+}
+
 #endif // IDLIB_SCALAR_H_INCLUDED
