@@ -112,6 +112,20 @@ idlib_vector_3_f32_lerp
     idlib_f32 operand3
   );
 
+/// @since 1.0
+/// @brief Compute the cross product of two vectors.
+/// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
+/// @param operand1 Pointer to an idlib_vector_3_f32 object, the first operand.
+/// @param operand2 Pointer to an idliv_vector_3_f32 object, the second operand.
+/// @remarks @a target, @a operand1, and @a operand2 all may refer to the same idlib_vector_3_f32 object.
+static inline void
+idlib_vector_3_f32_cross
+  (
+    idlib_vector_3_f32* target,
+    idlib_vector_3_f32* operand1,
+    idlib_vector_3_f32* operand2
+  );
+
 static inline idlib_f32
 idlib_vector_3_f32_get_squared_length
   (
@@ -226,6 +240,23 @@ idlib_vector_3_f32_lerp
     target->e[1] = (1.f - t) * operand1->e[1] + t * operand2->e[1];
     target->e[2] = (1.f - t) * operand1->e[2] + t * operand2->e[2];
   }
+}
+
+static inline void
+idlib_vector_3_f32_cross
+  (
+    idlib_vector_3_f32* target,
+    idlib_vector_3_f32* operand1,
+    idlib_vector_3_f32* operand2
+  )
+{
+  idlib_f32 t[3];
+  t[0] = operand1->e[1] * operand2->e[2] - operand1->e[2] * operand2->e[1];
+  t[1] = operand1->e[2] * operand2->e[0] - operand1->e[0] * operand2->e[2];
+  t[2] = operand1->e[0] * operand2->e[1] - operand1->e[1] * operand2->e[0];
+  target->e[0] = t[0];
+  target->e[1] = t[1];
+  target->e[2] = t[2];
 }
 
 #endif // IDLIB_VECTOR_3_H_INCLUDED
