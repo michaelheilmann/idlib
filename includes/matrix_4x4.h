@@ -23,6 +23,19 @@ typedef struct idlib_matrix_4x4_f32 {
   idlib_f32 e[4][4];
 } idlib_matrix_4x4_f32;
 
+/// @since 1.4
+/// @brief Add an idlib_matrix_4x4_f32 object to another idlib_matrix_4x4_f32 object. Assign the result to a idlib_matrix_4x4_f32 object.
+/// @param target Pointer to the idlib_matrix_4x4_f32 object to which the result is assigned.
+/// @param operand1 Pointer to the idlib_matrix_4x4_f32 object which is the augend (aka first summand aka first term).
+/// @param operand2 Pointer to the idlib_matrix_4x_f32 object which is the addend (aka second summand aka second term).
+static inline void
+idlib_matrix_4x4_f32_add
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand1,
+    idlib_matrix_4x4_f32 const* operand2
+  );
+
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of the identity matrix.
 /// @param target Pointer to the idlib_matrix_4x4_f32 object to which the result is assigned.
@@ -345,6 +358,25 @@ idlib_matrix_4x4_3f_transform_direction
     idlib_matrix_4x4_f32 const* operand1,
     idlib_vector_3_f32 const* operand2
   );
+
+static inline void
+idlib_matrix_4x4_f32_add
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand1,
+    idlib_matrix_4x4_f32 const* operand2
+  )
+{
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand1);
+  IDLIB_DEBUG_ASSERT(NULL != operand2);
+
+  for (size_t i = 0; i < 4; ++i) {
+    for (size_t j = 0; j < 4; ++j) {
+      target->e[i][j] = operand1->e[i][j] + operand2->e[i][j];
+    }
+  }
+}
 
 static inline void
 idlib_matrix_4x4_f32_set_identity
