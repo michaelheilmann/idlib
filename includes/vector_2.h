@@ -93,6 +93,24 @@ idlib_vector_2_f32_are_equal
     idlib_vector_2_f32 const* operand2
   );
 
+/// @since 1.0
+/// Linear interpolation between two vectors.
+/// @param target The idlib_vector_2_f32 object to assign the result to.
+/// @param operand1 Pointer to an idlib_vector_2_f32 object, the first operand.
+/// @param operand2 Pointer to an idlib_vector_2_f32 object, the second operand.
+/// @param operand3 idlib_f32 value, the interpolation factor.
+/// @remarks
+/// The interpolation factor is clamped to [0,1].
+/// Then the result is computed by operand1 * (1 - t) + operand2 * t.
+static inline void
+idlib_vector_2_f32_lerp
+  (
+    idlib_vector_2_f32* target,
+    idlib_vector_2_f32 const* operand1,
+    idlib_vector_2_f32 const* operand2,
+    idlib_f32 operand3
+  );
+
 static inline idlib_f32
 idlib_vector_2_f32_get_squared_length
   (
@@ -177,6 +195,29 @@ idlib_vector_2_f32_are_equal
   }
   return operand1->e[0] == operand2->e[0]
       && operand1->e[1] == operand2->e[1];
+}
+
+static inline void
+idlib_vector_2_f32_lerp
+  (
+    idlib_vector_2_f32* target,
+    idlib_vector_2_f32 const* operand1,
+    idlib_vector_2_f32 const* operand2,
+    idlib_f32 operand3
+  )
+{
+  IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != operand1);
+  IDLIB_DEBUG_ASSERT(NULL != operand2);
+  idlib_f32 t = idlib_clamp_f32(operand3);
+  if (t == 0.f) {
+    *target = *operand1;
+  } else if (t == 1.f) {
+    *target = *operand2;
+  } else {
+    target->e[0] = (1.f - t) * operand1->e[0] + t * operand2->e[0];
+    target->e[1] = (1.f - t) * operand1->e[1] + t * operand2->e[1];
+  }
 }
 
 #endif // IDLIB_VECTOR_2_H_INCLUDED
