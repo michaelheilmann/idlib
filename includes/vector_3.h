@@ -3,8 +3,6 @@
 #define IDLIB_VECTOR_3_H_INCLUDED
 
 #include "scalar.h"
-// NULL
-#include <stddef.h>
 
 /// @since 1.0
 /// @brief A three component vector with elements of type idlib_f32.

@@ -2,8 +2,13 @@
 #if !defined(IDLIB_SCALAR_H_INCLUDED)
 #define IDLIB_SCALAR_H_INCLUDED
 
+#include "configure.h"
+
 // bool, true, false
 #include <stdbool.h>
+
+// NULL
+#include <stddef.h>
 
 /// @since 1.0
 /// Alias for float.
