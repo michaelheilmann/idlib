@@ -1,3 +1,5 @@
+# Copyright (c) 2018-2024 Michael Heilmann. All rights reserved.
+# This file is licensed under the "zlib License".
 
 include(${CMAKE_CURRENT_LIST_DIR}/configure_warnings_and_errors.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/define_languages.cmake)

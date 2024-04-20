@@ -1,5 +1,5 @@
 # Copyright (c) 2023-2024 Michael Heilmann. All rights reserved.
-# This file is licensed under MIT license.
+# This file is licensed under the "zlib License".
 
 cmake_minimum_required(VERSION 3.20)
 
