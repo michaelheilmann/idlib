@@ -33,6 +33,10 @@ macro(end_library)
   target_sources(${name} PRIVATE ${${name}.configuration_files} ${${name}.header_files} ${${name}.source_files})
 
   configure_warnings_and_errors(${name})
+  
+  if (${${name}.operating_system} STREQUAL ${${name}.operating_system_linux})
+    set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
+  endif()
 
 endmacro()
 
@@ -46,6 +50,7 @@ macro(begin_executable)
   detect_c_compiler(${name})
   detect_instruction_set_architecture(${name})
   detect_operating_system(${name})
+  detect_multi_target_generator(${name})
 
 endmacro()
 
