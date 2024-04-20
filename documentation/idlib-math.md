@@ -1,12 +1,12 @@
-# Idlib
-Welcome to *IdLib*.
+# IdLib Math
+Welcome to *IdLib Math*.
 
-*IdLib* is a C library providing functionality for
+*IdLib Math* is a C library providing functionality for
 - numeric and trigonometric functions,
 - matrix and vector math as well as
 - color math
 
-## *IdLib* intended use
+## *IdLib Math* intended use
 The library is designed as *backing* library, that is, you can define your own matrix, vector, color types and simply
 *embed* the types provided by IdLib into them.
 
