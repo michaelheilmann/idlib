@@ -59,7 +59,7 @@ idlib_vector_2_f32_negate
     idlib_vector_2_f32 const* operand
   );
 
-/// @since 0.1
+/// @since 1.0
 /// Assign an idlib_vector_2_f32 object the specified scalar values.
 /// @param target A pointer to the idlib_vector_2_f32 object to assign the vector <code>(x,y)</code> to.
 /// @param x, y The scalar values.
@@ -71,7 +71,7 @@ idlib_vector_2_f32_set
     idlib_f32 y
   );
 
-/// @since 0.1
+/// @since 1.0
 /// Assign an idlib_vector_2_f32 object the values of an zero vector.
 /// @param target A pointer to the idlib_vector_2_f32 object to assign the vector <code>(x,y)</code> to.
 static inline void

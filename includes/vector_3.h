@@ -6,7 +6,7 @@
 // NULL
 #include <stddef.h>
 
-/// @since 0.1
+/// @since 1.0
 /// @brief A three component vector with elements of type idlib_f32.
 typedef struct idlib_vector_3_f32 {
   idlib_f32 e[3];
@@ -45,7 +45,7 @@ idlib_vector_3_f32_normalize
     idlib_vector_3_f32 const* operand
   );
 
-/// @since 0.1
+/// @since 1.0
 /// @brief Negate a vector.
 /// @param target Pointer to the idlib_vector_3_f32 object to assign the result to.
 /// @param operand Pointer to the idlib_vector_3_f32 object to negate.
@@ -70,7 +70,7 @@ idlib_vector_3_f32_set
     idlib_f32 z
   );
 
-/// @since 0.1
+/// @since 1.0
 /// @brief Assign an idlib_vector_3_f32 object the values of an zero vector.
 /// @param target Pointer to the idlib_vector_3_f32 object to assign the vector <code>(0,0,0)</code> to.
 static inline void
