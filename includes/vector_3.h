@@ -151,6 +151,16 @@ idlib_vector_3_f32_cross
 		idlib_vector_3_f32 const* operand2
 	);
 
+/// @since 1.1
+/// @brief Get a pointer to the data of a idlib_vector_3_f32 object.
+/// @param operand A pointer to the idlib_vector_3_f32 object.
+/// @return A pointer to the data. The pointer remains valid as long as the object remains valid and is not modified.
+static inline void*
+idlib_vector_3_f32_get_data
+	(
+		idlib_vector_3_f32* operand
+	);
+
 static inline idlib_f32
 idlib_vector_3_f32_get_squared_length
 	(
@@ -315,5 +325,12 @@ idlib_vector_3_f32_cross
 	target->e[1] = t[1];
 	target->e[2] = t[2];
 }
+
+static inline void*
+idlib_vector_3_f32_get_data
+	(
+		idlib_vector_3_f32* operand
+	)
+{ return &(operand->e[0]); } 
 
 #endif // IDLIB_VECTOR_3_H_INCLUDED
