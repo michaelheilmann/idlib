@@ -1,5 +1,8 @@
 # IdLib
-*IdLib* provides matrix and vector math in C.
+*IdLib* provides
+- matrix and vector math
+- color math
+for embedding into C programs.
 IdLib is licensed under the [Zlib license](LICENSE).
 
 ## Integration into your CMake project
