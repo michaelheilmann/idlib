@@ -10,17 +10,17 @@
 // an unintended substitution of names of parameters in
 // 'matrix_4x4.h'.This prevents this substitution.
 #if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
-	#pragma push_macro("near")
-	#undef near
-	#pragma push_macro("far")
-	#undef far
+  #pragma push_macro("near")
+  #undef near
+  #pragma push_macro("far")
+  #undef far
 #endif
 
 /// @since 1.0
 /// @brief A row-major matrix with elements of type idlib_f32.
 /// Row major means: The first index denotes the row, the second index denotes the column.
 typedef struct idlib_matrix_4x4_f32 {
-	idlib_f32 e[4][4];
+  idlib_f32 e[4][4];
 } idlib_matrix_4x4_f32;
 
 /// @since 1.0
@@ -28,9 +28,9 @@ typedef struct idlib_matrix_4x4_f32 {
 /// @param target Pointer to the idlib_matrix_4x4_f32 object.
 static inline void
 idlib_matrix_4x4_f32_set_identity
-	(
-		idlib_matrix_4x4_f32* target
-	);
+  (
+    idlib_matrix_4x4_f32* target
+  );
 
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of a translation matrix.
@@ -45,10 +45,10 @@ idlib_matrix_4x4_f32_set_identity
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_translation
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_vector_3_f32* operand
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_vector_3_f32* operand
+  );
 
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of a "rotation matrix"
@@ -64,10 +64,10 @@ idlib_matrix_4x4_f32_set_translation
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_x
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 operand
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 operand
+  );
 
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of a "rotation matrix"
@@ -83,10 +83,10 @@ idlib_matrix_4x4_f32_set_rotation_x
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_y
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 operand
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 operand
+  );
 
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of a "rotation matrix"
@@ -102,10 +102,10 @@ idlib_matrix_4x4_f32_set_rotation_y
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_rotation_z
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 operand
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 operand
+  );
 
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of an "orthographic projection matrix".
@@ -140,15 +140,15 @@ idlib_matrix_4x4_f32_set_rotation_z
 /// - the positive y-axis points to the top
 static inline void
 idlib_matrix_4x4_f32_set_orthographic
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 left,
-		idlib_f32 right,
-		idlib_f32 bottom,
-		idlib_f32 top,
-		idlib_f32 near,
-		idlib_f32 far
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 left,
+    idlib_f32 right,
+    idlib_f32 bottom,
+    idlib_f32 top,
+    idlib_f32 near,
+    idlib_f32 far
+  );
 
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of a "perspective projection matrix".
@@ -182,13 +182,13 @@ idlib_matrix_4x4_f32_set_orthographic
 /// - the positive y-axis points to the top
 static inline void
 idlib_matrix_4x4_f32_set_perspective
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 field_of_view_y,
-		idlib_f32 aspect_ratio,
-		idlib_f32 near,
-		idlib_f32 far
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 field_of_view_y,
+    idlib_f32 aspect_ratio,
+    idlib_f32 near,
+    idlib_f32 far
+  );
 
 /// @since 1.0
 /// @brief Compute the product of two matrices.
@@ -198,11 +198,11 @@ idlib_matrix_4x4_f32_set_perspective
 /// @remarks @a target, @a operand1, and @a operand2 all may refer to the same object.
 static inline void
 idlib_matrix_4x4_f32_multiply
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_matrix_4x4_f32 const* operand1,
-		idlib_matrix_4x4_f32 const* operand2
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand1,
+    idlib_matrix_4x4_f32 const* operand2
+  );
 
 /// @since 1.0
 /// @brief Assign this matrix the value a of a view matrix.
@@ -232,12 +232,12 @@ idlib_matrix_4x4_f32_multiply
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_look_at
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_vector_3_f32 const* operand1,
-		idlib_vector_3_f32 const* operand2,
-		idlib_vector_3_f32 const* operand3
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2,
+    idlib_vector_3_f32 const* operand3
+  );
 
 /// @since 1.1
 /// @brief Assign this matrix the values of scaling matrix representing.
@@ -252,10 +252,10 @@ idlib_matrix_4x4_f32_set_look_at
 /// @endcode
 static inline void
 idlib_matrix_4x4_f32_set_scale
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_vector_3_f32* operand
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_vector_3_f32* operand
+  );
 
 /// @since 1.1
 /// @brief Get a pointer to the data of a idlib_matrix_4x4_f32 object.
@@ -263,9 +263,9 @@ idlib_matrix_4x4_f32_set_scale
 /// @return A pointer to the data. The pointer remains valid as long as the object remains valid and is not modified.
 static inline void*
 idlib_matrix_4x4_f32_get_data
-	(
-		idlib_matrix_4x4_f32* operand
-	);
+  (
+    idlib_matrix_4x4_f32* operand
+  );
 
 /// @since 1.1
 /// @brief Negate a matrix.
@@ -274,406 +274,406 @@ idlib_matrix_4x4_f32_get_data
 /// @remarks @a target and @a operand all may refer to the same idlib_matrix_4x4_f32 object.
 static inline void
 idlib_matrix_4x4_f32_negate
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_matrix_4x4_f32 const* operand
-	);
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand
+  );
 
 static inline void
 idlib_matrix_4x4_f32_set_identity
-	(
-		idlib_matrix_4x4_f32* target
-	)
+  (
+    idlib_matrix_4x4_f32* target
+  )
 {
-	IDLIB_DEBUG_ASSERT(NULL != target);
+  IDLIB_DEBUG_ASSERT(NULL != target);
 
-	// first column
-	target->e[0][0] = 1.f;
-	target->e[1][0] = 0.f;
-	target->e[2][0] = 0.f;
-	target->e[3][0] = 0.f;
+  // first column
+  target->e[0][0] = 1.f;
+  target->e[1][0] = 0.f;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
 
-	// second column
-	target->e[0][1] = 0.f;
-	target->e[1][1] = 1.f;
-	target->e[2][1] = 0.f;
-	target->e[3][1] = 0.f;
+  // second column
+  target->e[0][1] = 0.f;
+  target->e[1][1] = 1.f;
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
 
-	// third column
-	target->e[0][2] = 0.f;
-	target->e[1][2] = 0.f;
-	target->e[2][2] = 1.0f;
-	target->e[3][2] = 0.f;
+  // third column
+  target->e[0][2] = 0.f;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = 1.0f;
+  target->e[3][2] = 0.f;
 
-	// fourth column
-	target->e[0][3] = 0.f;
-	target->e[1][3] = 0.f;
-	target->e[2][3] = 0.0f;
-	target->e[3][3] = 1.f;
+  // fourth column
+  target->e[0][3] = 0.f;
+  target->e[1][3] = 0.f;
+  target->e[2][3] = 0.0f;
+  target->e[3][3] = 1.f;
 }
 
 static inline void
 idlib_matrix_4x4_f32_set_translation
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_vector_3_f32* operand
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_vector_3_f32* operand
+  )
 {
-	// first column
-	target->e[0][0] = 1.f;
-	target->e[1][0] = 0.f;
-	target->e[2][0] = 0.f;
-	target->e[3][0] = 0.f;
+  // first column
+  target->e[0][0] = 1.f;
+  target->e[1][0] = 0.f;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
 
-	// second column
-	target->e[0][1] = 0.f;
-	target->e[1][1] = 1.f;
-	target->e[2][1] = 0.f;
-	target->e[3][1] = 0.f;
+  // second column
+  target->e[0][1] = 0.f;
+  target->e[1][1] = 1.f;
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
 
-	// third column
-	target->e[0][2] = 0.f;
-	target->e[1][2] = 0.f;
-	target->e[2][2] = 1.f;
-	target->e[3][2] = 0.f;
+  // third column
+  target->e[0][2] = 0.f;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = 1.f;
+  target->e[3][2] = 0.f;
 
-	// column #4
-	target->e[0][3] = operand->e[0];
-	target->e[1][3] = operand->e[1];
-	target->e[2][3] = operand->e[2];
-	target->e[3][3] = 1.f;
+  // column #4
+  target->e[0][3] = operand->e[0];
+  target->e[1][3] = operand->e[1];
+  target->e[2][3] = operand->e[2];
+  target->e[3][3] = 1.f;
 }
 
 static inline void
 idlib_matrix_4x4_f32_set_rotation_x
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 operand
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 operand
+  )
 {
-	idlib_f32 a = idlib_deg_to_rad_f32(operand);
-	idlib_f32 c = idlib_cos_f32(a);
-	idlib_f32 s = idlib_sin_f32(a);
+  idlib_f32 a = idlib_deg_to_rad_f32(operand);
+  idlib_f32 c = idlib_cos_f32(a);
+  idlib_f32 s = idlib_sin_f32(a);
 
-	// First column.
-	target->e[0][0] = 1.f;
-	target->e[1][0] = 0.f;
-	target->e[2][0] = 0.f;
-	target->e[3][0] = 0.f;
+  // First column.
+  target->e[0][0] = 1.f;
+  target->e[1][0] = 0.f;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
 
-	// Second column.
-	target->e[0][1] = 0.f;
-	target->e[1][1] = c;
-	target->e[2][1] = s;
-	target->e[3][1] = 0.f;
+  // Second column.
+  target->e[0][1] = 0.f;
+  target->e[1][1] = c;
+  target->e[2][1] = s;
+  target->e[3][1] = 0.f;
 
-	// Third column.
-	target->e[0][2] = 0.f;
-	target->e[1][2] = -s;
-	target->e[2][2] = c;
-	target->e[3][2] = 0.f;
+  // Third column.
+  target->e[0][2] = 0.f;
+  target->e[1][2] = -s;
+  target->e[2][2] = c;
+  target->e[3][2] = 0.f;
 
-	// Fourth column.
-	target->e[0][3] = 0.f;
-	target->e[1][3] = 0.f;
-	target->e[2][3] = 0.f;
-	target->e[3][3] = 1.f;
+  // Fourth column.
+  target->e[0][3] = 0.f;
+  target->e[1][3] = 0.f;
+  target->e[2][3] = 0.f;
+  target->e[3][3] = 1.f;
 }
 
 static inline void
 idlib_matrix_4x4_f32_set_rotation_y
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 operand
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 operand
+  )
 {
-	idlib_f32 a = idlib_deg_to_rad_f32(operand);
-	idlib_f32 c = idlib_cos_f32(a);
-	idlib_f32 s = idlib_sin_f32(a);
+  idlib_f32 a = idlib_deg_to_rad_f32(operand);
+  idlib_f32 c = idlib_cos_f32(a);
+  idlib_f32 s = idlib_sin_f32(a);
 
-	// First column.
-	target->e[0][0] = c;
-	target->e[1][0] = 0.f;
-	target->e[2][0] = -s;
-	target->e[3][0] = 0.f;
+  // First column.
+  target->e[0][0] = c;
+  target->e[1][0] = 0.f;
+  target->e[2][0] = -s;
+  target->e[3][0] = 0.f;
 
-	// Second column.
-	target->e[0][1] = 0.f;
-	target->e[1][1] = 1.f;
-	target->e[2][1] = 0.f;
-	target->e[3][1] = 0.f;
+  // Second column.
+  target->e[0][1] = 0.f;
+  target->e[1][1] = 1.f;
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
 
-	// Third column.
-	target->e[0][2] = s;
-	target->e[1][2] = 0.f;
-	target->e[2][2] = c;
-	target->e[3][2] = 0.f;
+  // Third column.
+  target->e[0][2] = s;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = c;
+  target->e[3][2] = 0.f;
 
-	// Fourth column.
-	target->e[0][3] = 0.f;
-	target->e[1][3] = 0.f;
-	target->e[2][3] = 0.f;
-	target->e[3][3] = 1.f;
+  // Fourth column.
+  target->e[0][3] = 0.f;
+  target->e[1][3] = 0.f;
+  target->e[2][3] = 0.f;
+  target->e[3][3] = 1.f;
 }
 
 static inline void
 idlib_matrix_4x4_f32_set_rotation_z
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 operand
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 operand
+  )
 {
-	idlib_f32 a = idlib_deg_to_rad_f32(operand);
-	idlib_f32 c = idlib_cos_f32(a);
-	idlib_f32 s = idlib_sin_f32(a);
+  idlib_f32 a = idlib_deg_to_rad_f32(operand);
+  idlib_f32 c = idlib_cos_f32(a);
+  idlib_f32 s = idlib_sin_f32(a);
 
-	// First column.
-	target->e[0][0] = c;
-	target->e[1][0] = s;
-	target->e[2][0] = 0.f;
-	target->e[3][0] = 0.f;
+  // First column.
+  target->e[0][0] = c;
+  target->e[1][0] = s;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
 
-	// Second column.
-	target->e[0][1] = -s;
-	target->e[1][1] = c;
-	target->e[2][1] = 0.f;
-	target->e[3][1] = 0.f;
+  // Second column.
+  target->e[0][1] = -s;
+  target->e[1][1] = c;
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
 
-	// Third column.
-	target->e[0][2] = 0.f;
-	target->e[1][2] = 0.f;
-	target->e[2][2] = 1.f;
-	target->e[3][2] = 0.f;
+  // Third column.
+  target->e[0][2] = 0.f;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = 1.f;
+  target->e[3][2] = 0.f;
 
-	// Fourth column.
-	target->e[0][3] = 0.f;
-	target->e[1][3] = 0.f;
-	target->e[2][3] = 0.f;
-	target->e[3][3] = 1.f;
+  // Fourth column.
+  target->e[0][3] = 0.f;
+  target->e[1][3] = 0.f;
+  target->e[2][3] = 0.f;
+  target->e[3][3] = 1.f;
 }
 
 inline void
 idlib_matrix_4x4_f32_set_orthographic
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 left,
-		idlib_f32 right,
-		idlib_f32 bottom,
-		idlib_f32 top,
-		idlib_f32 near,
-		idlib_f32 far
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 left,
+    idlib_f32 right,
+    idlib_f32 bottom,
+    idlib_f32 top,
+    idlib_f32 near,
+    idlib_f32 far
+  )
 {
-	idlib_f32 a = right - left;
-	idlib_f32 b = top - bottom;
-	idlib_f32 c = far - near;
+  idlib_f32 a = right - left;
+  idlib_f32 b = top - bottom;
+  idlib_f32 c = far - near;
 
-	idlib_f32 u = -(right + left) / a;
-	idlib_f32 v = -(top + bottom) / b;
-	idlib_f32 w = -(far + near) / c;
+  idlib_f32 u = -(right + left) / a;
+  idlib_f32 v = -(top + bottom) / b;
+  idlib_f32 w = -(far + near) / c;
 
-	// column #1
-	target->e[0][0] = 2.f / a;
-	target->e[1][0] = 0.f;
-	target->e[2][0] = 0.f;
-	target->e[3][0] = 0.f;
+  // column #1
+  target->e[0][0] = 2.f / a;
+  target->e[1][0] = 0.f;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
 
-	// column #2
-	target->e[0][1] = 0.f;
-	target->e[1][1] = 2.f / b;
-	target->e[2][1] = 0.f;
-	target->e[3][1] = 0.f;
+  // column #2
+  target->e[0][1] = 0.f;
+  target->e[1][1] = 2.f / b;
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
 
-	// column #3
-	target->e[0][2] = 0.f;
-	target->e[1][2] = 0.f;
-	target->e[2][2] = -2.f / c;
-	target->e[3][2] = 0.f;
+  // column #3
+  target->e[0][2] = 0.f;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = -2.f / c;
+  target->e[3][2] = 0.f;
 
-	// column #4
-	target->e[0][3] = u;
-	target->e[1][3] = v;
-	target->e[2][3] = w;
-	target->e[3][3] = 1.f;
+  // column #4
+  target->e[0][3] = u;
+  target->e[1][3] = v;
+  target->e[2][3] = w;
+  target->e[3][3] = 1.f;
 }
 
 inline void
 idlib_matrix_4x4_f32_set_perspective
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_f32 field_of_view_y,
-		idlib_f32 aspect_ratio,
-		idlib_f32 near,
-		idlib_f32 far
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_f32 field_of_view_y,
+    idlib_f32 aspect_ratio,
+    idlib_f32 near,
+    idlib_f32 far
+  )
 {
-	field_of_view_y = idlib_deg_to_rad_f32(field_of_view_y); // rad(x) = x / 360 * 2 * PI = x * (PI * / 180)
-	idlib_f32 f = 1.f / idlib_tan_f32(field_of_view_y / 2.f); // cot(x) = 1 / tan(x)
+  field_of_view_y = idlib_deg_to_rad_f32(field_of_view_y); // rad(x) = x / 360 * 2 * PI = x * (PI * / 180)
+  idlib_f32 f = 1.f / idlib_tan_f32(field_of_view_y / 2.f); // cot(x) = 1 / tan(x)
 
-	// column #1
-	target->e[0][0] = f / aspect_ratio;
-	target->e[1][0] = 0.f;
-	target->e[2][0] = 0.f;
-	target->e[3][0] = 0.f;
+  // column #1
+  target->e[0][0] = f / aspect_ratio;
+  target->e[1][0] = 0.f;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
 
-	// column #2
-	target->e[0][1] = 0.f;
-	target->e[1][1] = f;
-	target->e[2][1] = 0.f;
-	target->e[3][1] = 0.f;
+  // column #2
+  target->e[0][1] = 0.f;
+  target->e[1][1] = f;
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
 
-	// column #3
-	target->e[0][2] = 0.f;
-	target->e[1][2] = 0.f;
-	target->e[2][2] = (far + near) / (near - far);
-	target->e[3][2] = -1.f;
+  // column #3
+  target->e[0][2] = 0.f;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = (far + near) / (near - far);
+  target->e[3][2] = -1.f;
 
-	// column #4
-	target->e[0][3] = 0.f;
-	target->e[1][3] = 0.f;
-	target->e[2][3] = (2.f * far * near) / (near - far); // - (2 far near) / (far - near)
-	target->e[3][3] = 0.f;
+  // column #4
+  target->e[0][3] = 0.f;
+  target->e[1][3] = 0.f;
+  target->e[2][3] = (2.f * far * near) / (near - far); // - (2 far near) / (far - near)
+  target->e[3][3] = 0.f;
 }
 
 #if IDLIB_COMPILER_C == IDLIB_COMPILER_C_MSVC
-	#pragma pop_macro("near")
-	#pragma pop_macro("far")
+  #pragma pop_macro("near")
+  #pragma pop_macro("far")
 #endif
 
 static inline void
 idlib_matrix_4x4_f32_multiply
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_matrix_4x4_f32 const* operand1,
-		idlib_matrix_4x4_f32 const* operand2
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand1,
+    idlib_matrix_4x4_f32 const* operand2
+  )
 {
-	if (target != operand1 && target != operand2) {
-		for (size_t i = 0; i < 4; ++i) {
-			for (size_t j = 0; j < 4; ++j) {
-				target->e[i][j] = 0.f;
-				for (size_t k = 0; k < 4; ++k) {
-					target->e[i][j] += operand1->e[i][k] * operand2->e[k][j];
-				}
-			}
-		}
-	} else {
-		idlib_f32 t[4][4];
+  if (target != operand1 && target != operand2) {
+    for (size_t i = 0; i < 4; ++i) {
+      for (size_t j = 0; j < 4; ++j) {
+        target->e[i][j] = 0.f;
+        for (size_t k = 0; k < 4; ++k) {
+          target->e[i][j] += operand1->e[i][k] * operand2->e[k][j];
+        }
+      }
+    }
+  } else {
+    idlib_f32 t[4][4];
 
-		for (size_t i = 0; i < 4; ++i) {
-			for (size_t j = 0; j < 4; ++j) {
-				t[i][j] = 0.f;
-				for (size_t k = 0; k < 4; ++k) {
-					t[i][j] += operand1->e[i][k] * operand2->e[k][j];
-				}
-			}
-		}
-		for (size_t i = 0; i < 4; ++i) {
-			for (size_t j = 0; j < 4; ++j) {
-				target->e[i][j] = t[i][j];
-			}
-		}
-	}
+    for (size_t i = 0; i < 4; ++i) {
+      for (size_t j = 0; j < 4; ++j) {
+        t[i][j] = 0.f;
+        for (size_t k = 0; k < 4; ++k) {
+          t[i][j] += operand1->e[i][k] * operand2->e[k][j];
+        }
+      }
+    }
+    for (size_t i = 0; i < 4; ++i) {
+      for (size_t j = 0; j < 4; ++j) {
+        target->e[i][j] = t[i][j];
+      }
+    }
+  }
 }
 
 static inline void
 idlib_matrix_4x4_f32_set_look_at
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_vector_3_f32 const* operand1,
-		idlib_vector_3_f32 const* operand2,
-		idlib_vector_3_f32 const* operand3
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_vector_3_f32 const* operand1,
+    idlib_vector_3_f32 const* operand2,
+    idlib_vector_3_f32 const* operand3
+  )
 {
-	idlib_vector_3_f32 forward, right, up1, up2;
-	idlib_matrix_4x4_f32 r, t;
+  idlib_vector_3_f32 forward, right, up1, up2;
+  idlib_matrix_4x4_f32 r, t;
 
-	// forward := norm(target - source)
-	idlib_vector_3_f32_subtract(&forward, operand2, operand1);
-	idlib_vector_3_f32_normalize(&forward, &forward);
-	// right := forward x norm(up)
-	idlib_vector_3_f32_normalize(&up1, operand3);
-	idlib_vector_3_f32_cross(&right, &forward, &up1);
-	// up' := right x forward
-	idlib_vector_3_f32_cross(& up2, & right, & forward);
+  // forward := norm(target - source)
+  idlib_vector_3_f32_subtract(&forward, operand2, operand1);
+  idlib_vector_3_f32_normalize(&forward, &forward);
+  // right := forward x norm(up)
+  idlib_vector_3_f32_normalize(&up1, operand3);
+  idlib_vector_3_f32_cross(&right, &forward, &up1);
+  // up' := right x forward
+  idlib_vector_3_f32_cross(& up2, & right, & forward);
 
-	// First column.
-	r.e[0][0] = right.e[0];
-	r.e[1][0] = up2.e[0];
-	r.e[2][0] = -forward.e[0];
-	r.e[3][0] = 0.f;
-	// Second column.
-	r.e[0][1] = right.e[1];
-	r.e[1][1] = up2.e[1];
-	r.e[2][1] = -forward.e[1];
-	r.e[3][1] = 0.f;
-	// Third column.
-	r.e[0][2] = right.e[2];
-	r.e[1][2] = up2.e[2];
-	r.e[2][2] = -forward.e[2];
-	r.e[3][2] = 0.f;
-	// Fourth column.
-	r.e[0][3] = 0.f;
-	r.e[1][3] = 0.f;
-	r.e[2][3] = 0.f;
-	r.e[3][3] = 1.f;
+  // First column.
+  r.e[0][0] = right.e[0];
+  r.e[1][0] = up2.e[0];
+  r.e[2][0] = -forward.e[0];
+  r.e[3][0] = 0.f;
+  // Second column.
+  r.e[0][1] = right.e[1];
+  r.e[1][1] = up2.e[1];
+  r.e[2][1] = -forward.e[1];
+  r.e[3][1] = 0.f;
+  // Third column.
+  r.e[0][2] = right.e[2];
+  r.e[1][2] = up2.e[2];
+  r.e[2][2] = -forward.e[2];
+  r.e[3][2] = 0.f;
+  // Fourth column.
+  r.e[0][3] = 0.f;
+  r.e[1][3] = 0.f;
+  r.e[2][3] = 0.f;
+  r.e[3][3] = 1.f;
 
-	idlib_vector_3_f32 negae;
-	negae = *operand1;
-	idlib_vector_3_f32_negate(&negae, &negae);
-	idlib_matrix_4x4_f32_set_translation(&t, &negae);
+  idlib_vector_3_f32 negae;
+  negae = *operand1;
+  idlib_vector_3_f32_negate(&negae, &negae);
+  idlib_matrix_4x4_f32_set_translation(&t, &negae);
 
-	idlib_matrix_4x4_f32_multiply(target, &r, &t);
+  idlib_matrix_4x4_f32_multiply(target, &r, &t);
 }
 
 static inline void
 idlib_matrix_4x4_f32_set_scale
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_vector_3_f32* operand
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_vector_3_f32* operand
+  )
 {
-	// First column.
-	target->e[0][0] = operand->e[0];
-	target->e[1][0] = 0.f;
-	target->e[2][0] = 0.f;
-	target->e[3][0] = 0.f;
-	// Second column.
-	target->e[0][1] = 0.f;
-	target->e[1][1] = operand->e[1];
-	target->e[2][1] = 0.f;
-	target->e[3][1] = 0.f;
-	// Third column.
-	target->e[0][2] = 0.f;
-	target->e[1][2] = 0.f;
-	target->e[2][2] = operand->e[2];
-	target->e[3][2] = 0.f;
-	// Fourth column.
-	target->e[0][3] = 0.f;
-	target->e[1][3] = 0.f;
-	target->e[2][3] = 0.f;
-	target->e[3][3] = 1.f;
+  // First column.
+  target->e[0][0] = operand->e[0];
+  target->e[1][0] = 0.f;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
+  // Second column.
+  target->e[0][1] = 0.f;
+  target->e[1][1] = operand->e[1];
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
+  // Third column.
+  target->e[0][2] = 0.f;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = operand->e[2];
+  target->e[3][2] = 0.f;
+  // Fourth column.
+  target->e[0][3] = 0.f;
+  target->e[1][3] = 0.f;
+  target->e[2][3] = 0.f;
+  target->e[3][3] = 1.f;
 }
 
 static inline void*
 idlib_matrix_4x4_f32_get_data
-	(
-		idlib_matrix_4x4_f32* operand
-	)
+  (
+    idlib_matrix_4x4_f32* operand
+  )
 { return &(operand->e[0][0]); }
 
 static inline void
 idlib_matrix_4x4_f32_negate
-	(
-		idlib_matrix_4x4_f32* target,
-		idlib_matrix_4x4_f32 const* operand
-	)
+  (
+    idlib_matrix_4x4_f32* target,
+    idlib_matrix_4x4_f32 const* operand
+  )
 {
-	for (size_t i = 0; i < 4; ++i) {
-		for (size_t j = 0; j < 4; ++j) {
-			target->e[i][j] = -operand->e[i][j];
-		}
-	}
+  for (size_t i = 0; i < 4; ++i) {
+    for (size_t j = 0; j < 4; ++j) {
+      target->e[i][j] = -operand->e[i][j];
+    }
+  }
 }
 
 #endif // IDLIB_MATRIX_4X4_H_INCLUDED
