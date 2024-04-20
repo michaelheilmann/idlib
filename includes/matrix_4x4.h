@@ -51,7 +51,7 @@ idlib_matrix_4x4_f32_set_identity
 /// z = idlib_vector_3_f32_get_z(operand)
 /// @endcode
 static inline void
-idlib_matrix_4x4_f32_set_translation
+idlib_matrix_4x4_f32_set_translate
   (
     idlib_matrix_4x4_f32* target,
     idlib_vector_3_f32 const* operand
@@ -380,7 +380,7 @@ idlib_matrix_4x4_f32_set_identity
 }
 
 static inline void
-idlib_matrix_4x4_f32_set_translation
+idlib_matrix_4x4_f32_set_translate
   (
     idlib_matrix_4x4_f32* target,
     idlib_vector_3_f32 const* operand
