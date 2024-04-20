@@ -163,7 +163,7 @@ static inline void
 idlib_color_convert_3_u8_to_4_f32
   (
     idlib_color_4_f32* target,
-    idlib_color_3_u8* operand1,
+    idlib_color_3_u8 const* operand1,
     idlib_f32 operand2
   );
 
@@ -171,7 +171,7 @@ static inline void
 idlib_color_convert_3_u8_to_4_f32
   (
     idlib_color_4_f32* target,
-    idlib_color_3_u8* operand1,
+    idlib_color_3_u8 const* operand1,
     idlib_f32 operand2
   )
 {
