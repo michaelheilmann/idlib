@@ -26,26 +26,26 @@ list(APPEND idlib-sources "${CMAKE_CURRENT_SOURCE_DIR}/sources/version.c")
 # For MSVC: Turn on several warnings.
 if(MSVC)
 
-  set(COMPILE_OPTIONS "")
+  set(idlib_compile_options "")
 
   # C4090:  'opertion' : different 'modifier' qualifiers
-  list(APPEND COMPILE_OPTIONS "/we4090")
+  list(APPEND idlib_compile_options "/we4090")
   # C4133: 'function' incompatible types - from 'type1' to 'type2'
-  list(APPEND COMPILE_OPTIONS "/we4133")
+  list(APPEND idlib_compile_options "/we4133")
   # C4020_ 'function': too many actual parameters
-  list(APPEND COMPILE_OPTIONS "/we4020")
+  list(APPEND idlib_compile_options "/we4020")
   # C4013: 'function': undefined; assuming extern returning int
-  list(APPEND COMPILE_OPTIONS "/we4013")
+  list(APPEND idlib_compile_options "/we4013")
   # C4024: 'function': different types for formal and actual parameter 'number'
-  list(APPEND COMPILE_OPTIONS "/we4024")
+  list(APPEND idlib_compile_options "/we4024")
   # C4716: 'function' must return a value
-  list(APPEND COMPILE_OPTIONS "/we4716")
+  list(APPEND idlib_compile_options "/we4716")
   # C4013: 'function' undefined; assuming extern returning int
-  list(APPEND COMPILE_OPTIONS "/we4013")
+  list(APPEND idlib_compile_options "/we4013")
 
-  # The quotes around "${COMPILE_OPTIONS}" concatenate the list elements to a single string separated by semicolons.
-  set_source_files_properties(${idlib-sources} PROPERTIES COMPILE_OPTIONS "${COMPILE_OPTIONS}")
-  set_source_files_properties(${idlib-headers} PROPERTIES COMPILE_OPTIONS "${COMPILE_OPTIONS}")
+  # The quotes around "${idlib_compile_options}" concatenate the list elements to a single string separated by semicolons.
+  set_source_files_properties(${idlib-sources} PROPERTIES COMPILE_OPTIONS "${idlib_compile_options}")
+  set_source_files_properties(${idlib-headers} PROPERTIES COMPILE_OPTIONS "${idlib_compile_options}")
 
 endif()
 
