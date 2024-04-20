@@ -242,6 +242,24 @@ idlib_matrix_4x4_f32_set_look_at
 		idlib_vector_3_f32 const* operand3
 	);
 
+/// @since 1.1
+/// @brief Assign this matrix the values of scaling matrix representing.
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
+/// @param operand The angle of rotation, 
+/// @remarks
+/// @code
+/// | c | -s | 0 | 0 |
+/// | s |  c | 0 | 0 |
+/// | 0 |  0 | 1 | 0 |
+/// | 0 |  0 | 0 | 1 |
+/// @endcode
+static inline void
+idlib_matrix_4x4_f32_set_scale
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_vector_3_f32* operand
+	);
+
 static inline void
 idlib_matrix_4x4_f32_set_identity
 	(
@@ -587,6 +605,35 @@ idlib_matrix_4x4_f32_set_look_at
 	idlib_matrix_4x4_f32_set_translation(&t, &negae);
 
 	idlib_matrix_4x4_f32_multiply(target, &r, &t);
+}
+
+static inline void
+idlib_matrix_4x4_f32_set_scale
+	(
+		idlib_matrix_4x4_f32* target,
+		idlib_vector_3_f32* operand
+	)
+{
+	// First column.
+	target->e[0][0] = operand->e[0];
+	target->e[1][0] = 0.f;
+	target->e[2][0] = 0.f;
+	target->e[3][0] = 0.f;
+	// Second column.
+	target->e[0][1] = 0.f;
+	target->e[1][1] = operand->e[1];
+	target->e[2][1] = 0.f;
+	target->e[3][1] = 0.f;
+	// Third column.
+	target->e[0][2] = 0.f;
+	target->e[1][2] = 0.f;
+	target->e[2][2] = operand->e[2];
+	target->e[3][2] = 0.f;
+	// Fourth column.
+	target->e[0][3] = 0.f;
+	target->e[1][3] = 0.f;
+	target->e[2][3] = 0.f;
+	target->e[3][3] = 1.f;
 }
 
 #endif // IDLIB_MATRIX_4X4_H_INCLUDED
