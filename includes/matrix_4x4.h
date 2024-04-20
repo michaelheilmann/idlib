@@ -37,7 +37,7 @@ idlib_matrix_4x4_f32_set_identity
 
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of a translation matrix.
-/// @param target Pointer to the idlib_matrix_4x4_f32 object.
+/// @param target Pointer to the idlib_matrix_4x4_f32 object to assign the result to.
 /// @param operand Pointer to the idlib_vector_3_f32 object representing the translation vector.
 /// @remarks
 /// @code
@@ -54,10 +54,10 @@ idlib_matrix_4x4_f32_set_translation
 	);
 
 /// @since 1.0
-/// @brief Assign an idlib_matrix_4x4_f32 object the values of a rotation matrix.
-/// @details The rotation matrix is a counter-clockwise rotation around the x-axis by the specified number of degrees.
-/// @param m A pointer to this matrix.
-/// @param a The angle of rotation, in degrees.
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of a "rotation matrix"
+/// (for a counter-clockwise rotation around the x-axis).
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
+/// @param operand The angle of rotation, in degrees.
 /// @remarks
 /// @code
 /// | 1 | 0 |  0 | 0 |
@@ -73,10 +73,10 @@ idlib_matrix_4x4_f32_set_rotation_x
 	);
 
 /// @since 1.0
-/// @brief Assign this matrix the values of transformation matrix representing
-/// a counter-clockwise rotation around the y-axis by the specified number of degrees.
-/// @param m A pointer to this matrix.
-/// @param a The angle of rotation, in degrees.
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of a "rotation matrix"
+/// (for a counter-clockwise rotation around the y-axis).
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
+/// @param operand The angle of rotation, in degrees.
 /// @remarks
 /// @code
 /// |  c | 0 | s | 0 |
@@ -92,9 +92,9 @@ idlib_matrix_4x4_f32_set_rotation_y
 	);
 
 /// @since 1.0
-/// @brief Assign this matrix the values of transformation matrix representing
-/// a counter-clockwise rotation around the z-axis by the specified number of degrees.
-/// @param target A pointer to this matrix.
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of a "rotation matrix"
+/// (for a counter-clockwise rotation around the z-axis).
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
 /// @param operand The angle of rotation, in degrees.
 /// @remarks
 /// @code
@@ -111,8 +111,8 @@ idlib_matrix_4x4_f32_set_rotation_z
 	);
 
 /// @since 1.0
-/// @brief Assign this matrix the values of an orthographic projection matrix.
-/// @param target A pointer to this matrix.
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of an "orthographic projection matrix".
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
 /// @param left The distance to the left clip plane.
 /// @param right The distance to the right clip plane.
 /// @param bottom The distance to the bottom clip plane.
@@ -154,8 +154,8 @@ idlib_matrix_4x4_f32_set_ortho
 	);
 
 /// @since 1.0
-/// @brief Assign this matrix the values of a perspective projection matrix.
-/// @param target A pointer to this matrix.
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of a "perspective projection matrix".
+/// @param target A pointer to the idlib_matrix_4x4_f32 object to assign the result to.
 /// @param field_of_view_y The field of view along the y-axis in degrees.
 /// In other terms: The angle, in degrees, in between a plane passing through the camera position as well as the top of your screen and another plane passing
 /// through the camera position and the bottom of your screen.  The bigger this angle is, the more you can see of the world - but at the same time, the objects
