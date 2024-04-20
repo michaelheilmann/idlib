@@ -20,7 +20,7 @@ typedef struct idlib_color_3_u8 {
   };
 } idlib_color_3_u8;
 
-/** 
+/**
  * @since 1.2
  * @brief Assign an idlib_color_3_u8 object the specified component values.
  * @param target Pointer to the idlib_matrix_4x4_f32 object.
