@@ -49,6 +49,15 @@ idlib_matrix_4x4_f32_subtract
     idlib_matrix_4x4_f32 const* operand2
   );
 
+/// @since 1.4
+/// @brief Assign an idlib_matrix_4x4_f32 object the values of the zero matrix.
+/// @param target Pointer to the idlib_matrix_4x4_f32 object to which the result is assigned.
+static inline void
+idlib_matrix_4x4_f32_set_zero
+  (
+    idlib_matrix_4x4_f32* target
+  );
+
 /// @since 1.0
 /// @brief Assign an idlib_matrix_4x4_f32 object the values of the identity matrix.
 /// @param target Pointer to the idlib_matrix_4x4_f32 object to which the result is assigned.
@@ -408,6 +417,39 @@ idlib_matrix_4x4_f32_subtract
       target->e[i][j] = operand1->e[i][j] - operand2->e[i][j];
     }
   }
+}
+
+static inline void
+idlib_matrix_4x4_f32_set_zero
+  (
+    idlib_matrix_4x4_f32* target
+  )
+{
+  IDLIB_DEBUG_ASSERT(NULL != target);
+
+  // first column
+  target->e[0][0] = 0.f;
+  target->e[1][0] = 0.f;
+  target->e[2][0] = 0.f;
+  target->e[3][0] = 0.f;
+
+  // second column
+  target->e[0][1] = 0.f;
+  target->e[1][1] = 0.f;
+  target->e[2][1] = 0.f;
+  target->e[3][1] = 0.f;
+
+  // third column
+  target->e[0][2] = 0.f;
+  target->e[1][2] = 0.f;
+  target->e[2][2] = 0.0f;
+  target->e[3][2] = 0.f;
+
+  // fourth column
+  target->e[0][3] = 0.f;
+  target->e[1][3] = 0.f;
+  target->e[2][3] = 0.0f;
+  target->e[3][3] = 0.f;
 }
 
 static inline void
