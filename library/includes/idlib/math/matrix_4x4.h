@@ -906,6 +906,32 @@ idlib_matrix_4x4_f32_negate
   }
 }
 
+static inline idlib_f32
+idlib_matrix_4x4_f32_determinant
+  (
+    idlib_matrix_4x4_f32 const* operand
+  )
+{
+  IDLIB_DEBUG_ASSERT(NULL != operand);
+  idlib_f32 det = 0.f;
+  
+  #define e(i,j) operand->e[i][j]
+  
+  // Cofactor expansion along first row.
+  det += e(0,0) * (  e(1,1)*e(2,2)*e(3,3) + e(1,2)*e(2,3)*e(3,1) + e(1,3)*e(2,1)*e(3,2)
+                   - e(1,3)*e(2,2)*e(3,1) - e(1,1)*e(2,3)*e(3,2) - e(1,2)*e(2,1)*e(3,3) );
+  det -= e(0,1) * (  e(1,0)*e(2,2)*e(3,3) + e(1,2)*e(2,3)*e(3,0) + e(1,3)*e(2,0)*e(3,2)
+                   - e(1,3)*e(2,2)*e(3,0) - e(1,0)*e(2,3)*e(3,2) - e(1,2)*e(2,0)*e(3,3) );
+  det += e(0,2) * (  e(1,0)*e(2,1)*e(3,3) + e(1,1)*e(2,3)*e(3,0) + e(1,3)*e(2,0)*e(3,1)
+                   - e(1,3)*e(2,1)*e(3,0) - e(1,0)*e(2,3)*e(3,1) - e(1,1)*e(2,0)*e(3,3) );
+  det -= e(0,3) * (  e(1,0)*e(2,1)*e(3,2) + e(1,1)*e(2,2)*e(3,0) + e(1,2)*e(2,0)*e(3,1)
+                   - e(1,2)*e(2,1)*e(3,0) - e(1,0)*e(2,2)*e(3,1) - e(1,1)*e(2,0)*e(3,2) );
+                   
+  #undef e
+                   
+  return det;
+}
+
 static inline void
 idlib_matrix_4x4_f32_transpose
   (
