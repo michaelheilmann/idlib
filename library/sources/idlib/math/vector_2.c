@@ -19,4 +19,4 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
-#include "vector_2.h"
+#include "idlib/math/vector_2.h"

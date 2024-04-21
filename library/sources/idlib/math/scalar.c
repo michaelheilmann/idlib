@@ -19,7 +19,7 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
-#include "scalar.h"
+#include "idlib/math/scalar.h"
 
 // sqrt(f), cos(f), sin(f), tan(f)
 #include <math.h>
