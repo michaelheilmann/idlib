@@ -20,5 +20,4 @@ A pointer to the data of the `idlib_vector_3_f32` object.
 The pointer remains valid as long as the object remains valid and is not modified.
 
 **Remarks**
-- The behavior of the function is undefined if `operand1`, `operand2`, or `target` do not point to `idlib_matrix_4x4_f32` objects.
-- `operand1`, `operand2`, and `target` can all point to the same `idlib_matrix_4x4_f32` object.
+- The behavior of the function is undefined if `operand` does not point to an `idlib_vector_3_f32` object.

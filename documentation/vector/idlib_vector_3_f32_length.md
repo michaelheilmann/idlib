@@ -19,4 +19,4 @@ Compute the length of `operand`.
 The length of the `idlib_vector_3_f32` object pointed to by `operand`.
 
 **Remarks**
-- The behavior of the function is undefined if `operand` does not point to `idlib_vector_3_f32` objects.
+- The behavior of the function is undefined if `operand` does not point to an `idlib_vector_3_f32` object.

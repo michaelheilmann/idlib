@@ -26,4 +26,4 @@ of that `idlib_vector_3_f32` object.
 - `operand3` The value to assign to the *z* component.
 
 **Remarks**
-- The behavior of the function is undefined if `target` does not point to a `idlib_vector_3_f32` object.
+- The behavior of the function is undefined if `target` does not point to an `idlib_vector_3_f32` object.

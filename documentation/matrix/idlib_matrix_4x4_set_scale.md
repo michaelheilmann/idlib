@@ -35,5 +35,5 @@ z = idlib_vector_3_f32_get_z(operand)
             Its x, y, and z component values denote the scalings along the x-, y-, and z-axis, respectively.
 
 **Remarks**
-- The behavior of the function is undefined if `target` does not point to a `idlib_matrix_4x4_f32` object.
-- The behavior of the function is undefined if `operand` does not point to a `idlib_vector_3_f32` object.
+- The behavior of the function is undefined if `target` does not point to an `idlib_matrix_4x4_f32` object.
+- The behavior of the function is undefined if `operand` does not point to an `idlib_vector_3_f32` object.

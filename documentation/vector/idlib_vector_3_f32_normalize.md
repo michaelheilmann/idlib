@@ -23,5 +23,5 @@ Otherwise `target` is assigned the normalized `operand`.
 `true` if the length of `operand` was not `0`, `false` otherwise.
 
 **Remarks**
-- The behavior of the function is undefined if `operand` or `target` does not point to a `idlib_vector_3_f32` object.
+- The behavior of the function is undefined if `operand` or `target` do not point to `idlib_vector_3_f32` objects.
 - `operand` and `target` can all point to the same `idlib_vector_3_f32` object.

@@ -18,5 +18,5 @@ Transpose `operand` and assign the result to `target`.
 - `operand` Pointer to an `idlib_matrix_4x4_f32` to be transposed.
 
 **Remarks**
-- The behavior of the function is undefined if `target` or `operand` does not point to a `idlib_matrix_4x4_f32` object.
+- The behavior of the function is undefined if `target` or `operand` do not point to `idlib_matrix_4x4_f32` objects.
 - `operand` and `target` can all point to the same `idlib_matrix_4x4_f32` object.

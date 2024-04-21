@@ -33,4 +33,4 @@ s = sin(2 * π * operand / 360)
 - `operand` The angle, in degrees, of the rotation.
 
 **Remarks**
-- The behavior of the function is undefined if `target` does not point to a `idlib_matrix_4x4_f32` object.
+- The behavior of the function is undefined if `target` does not point to an `idlib_matrix_4x4_f32` object.
