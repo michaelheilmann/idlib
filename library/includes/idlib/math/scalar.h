@@ -22,7 +22,7 @@
 #if !defined(IDLIB_SCALAR_H_INCLUDED)
 #define IDLIB_SCALAR_H_INCLUDED
 
-#include "configure.h"
+#include "idlib/math/configure.h"
 
 // bool, true, false
 #include <stdbool.h>
