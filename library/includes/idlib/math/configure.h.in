@@ -19,8 +19,8 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
-#if !defined(IDLIB_CONFIGURE_H_INCLUDED)
-#define IDLIB_CONFIGURE_H_INCLUDED
+#if !defined(IDLIB_MATH_CONFIGURE_H_INCLUDED)
+#define IDLIB_MATH_CONFIGURE_H_INCLUDED
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -150,4 +150,4 @@
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-#endif // IDLIB_CONFIGURE_H_INCLUDED
+#endif // IDLIB_MATH_CONFIGURE_H_INCLUDED

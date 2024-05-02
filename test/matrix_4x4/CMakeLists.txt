@@ -21,9 +21,9 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-include(${idlib-math-cmake-files-dir}/all.cmake)
+include(${idlib-process.source-dir}/cmake/all.cmake)
 
-set(name idlib-math-test-matrix-4x4)
+set(name idlib-math.test.matrix-4x4)
 begin_executable()
 
 if (${${name}.compiler_c} STREQUAL ${${name}.compiler_c_msvc})
