@@ -23,8 +23,8 @@ cmake_minimum_required(VERSION 3.20)
 
 include(${idlib-process.source-dir}/cmake/all.cmake)
 
-set(name idlib-math)
-begin_library()
+set(name idlib-math.test.vector-4)
+begin_executable()
 
 if (${${name}.compiler_c} STREQUAL ${${name}.compiler_c_msvc})
   set("IDLIB_COMPILER_C" "IDLIB_COMPILER_C_MSVC")
@@ -60,45 +60,17 @@ else()
   message(FATAL_ERROR "operating system detection not executed")
 endif()
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/configure.h.in ${CMAKE_CURRENT_BINARY_DIR}/includes/idlib/math/configure.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/includes/configure.h.in ${CMAKE_CURRENT_BINARY_DIR}/includes/configure.h)
 
-list(APPEND ${name}.configuration_files "${CMAKE_CURRENT_BINARY_DIR}/includes/idlib/math/configure.h")
+list(APPEND ${name}.configuration_files "${CMAKE_CURRENT_BINARY_DIR}/includes/configure.h")
+list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/main.c")
 
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/scalar.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/scalar.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/matrix_4x4.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/matrix_4x4.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/vector_2.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/vector_2.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/vector_3.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/vector_3.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/vector_4.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/vector_4.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/color.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/color.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/version.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/version.c")
-
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/colors.i")
-list(APPEND ${name}.header_files "${CMAKE_CURRENT_SOURCE_DIR}/includes/idlib/math/colors.h")
-list(APPEND ${name}.source_files "${CMAKE_CURRENT_SOURCE_DIR}/sources/idlib/math/colors.c")
-
-end_library()
+end_executable()
 
 source_group(TREE ${CMAKE_CURRENT_BINARY_DIR} FILES ${${name}.configuration_files})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${${name}.header_files})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${${name}.source_files})
 
-# We must link libm under Linux.
-if (${${name}.operating_system} STREQUAL ${${name}.operating_system_linux})
-  target_link_libraries(${name} m)
-endif()
+target_link_libraries(${name} PRIVATE idlib-math)
+
+add_test(NAME ${name} COMMAND ${name})

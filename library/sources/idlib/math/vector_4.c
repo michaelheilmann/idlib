@@ -19,16 +19,4 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
-#if !defined(IDLIB_MATH_H_INCLUDED)
-#define IDLIB_MATH_H_INCLUDED
-
-#include "idlib/math/color.h"
-#include "idlib/math/colors.h"
-#include "idlib/math/scalar.h"
-#include "idlib/math/matrix_4x4.h"
-#include "idlib/math/vector_2.h"
-#include "idlib/math/vector_3.h"
 #include "idlib/math/vector_4.h"
-#include "idlib/math/version.h"
-
-#endif // IDLIB_MATH_H_INCLUDED
