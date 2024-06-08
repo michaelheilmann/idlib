@@ -22,4 +22,4 @@ Add `operand2` to `operand1` and assign the result to `target`.
 
 *Remarks*
 - The behavior of the function is undefined if `operand1`, `operand2`, or `target` do not point to `idlib_vector_3_f32` objects.
-- `operand1`, `operand2`, and `target` can all point to the same `idlib_matrix_4x4_f32` object.
+- `operand1`, `operand2`, and `target` can all point to the same `idlib_vector_3_f32` object.

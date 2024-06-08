@@ -1,9 +1,9 @@
-# idlib_vector_3_f32_set_zero
+# idlib_vector_3_f32_zero
 
 **Signature**
 ```
 void
-idlib_vector_3_f32_set_zero
+idlib_vector_3_f32_zero
   (
     idlib_vector_3_f32* target
   )

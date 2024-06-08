@@ -8,7 +8,7 @@ idlib_vector_3_f32_set
     idlib_vector_3_f32* target,
     idlib_f32 operand1,
     idlib_f32 operand2,
-    idlib_f32_operand3
+    idlib_f32 operand3
   )
 ```
 
